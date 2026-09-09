@@ -105,7 +105,7 @@ class AcademicDashboardPage extends StatelessWidget {
                               ),
                         ),
                         Text(
-                          'TI2F - PWL',
+                          'TI-3G - Programmer Mobile',
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                 color: Theme.of(context).colorScheme.onPrimaryContainer,
                               ),
