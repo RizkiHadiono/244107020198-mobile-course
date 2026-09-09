@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+// Refactoring 3: Memindahkan breakpoint ke satu konstanta
+const double kWideBreakpoint = 700;
+
 void main() => runApp(const AcademicOverviewApp());
 
 class AcademicOverviewApp extends StatefulWidget {
@@ -57,7 +60,6 @@ class AcademicDashboardPage extends StatelessWidget {
             children: [
               Icon(isDark ? Icons.dark_mode : Icons.light_mode),
               const SizedBox(width: 8),
-              // Memenuhi Ketentuan: Label Aksesibilitas
               Semantics(
                 label: 'Tombol ganti tema gelap atau terang',
                 child: CupertinoSwitch(
@@ -70,15 +72,15 @@ class AcademicDashboardPage extends StatelessWidget {
           ),
         ],
       ),
-      // Menggunakan SingleChildScrollView agar bisa di-scroll jika layar terlalu kecil
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // 1. Memenuhi Ketentuan: Header Profil (Row, Column, Expanded, Container)
+            // Header Profil
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
+                // Menggunakan Theme.of(context) agar warna mengikuti tema terang/gelap
                 color: Theme.of(context).colorScheme.primaryContainer,
                 borderRadius: BorderRadius.circular(16),
               ),
@@ -117,23 +119,23 @@ class AcademicDashboardPage extends StatelessWidget {
             
             const SizedBox(height: 24),
 
-            // 2. Memenuhi Ketentuan: Layout Responsif 1 atau 2 Kolom
             LayoutBuilder(
               builder: (context, constraints) {
-                final columns = constraints.maxWidth >= 700 ? 2 : 1;
+                // Menggunakan konstanta kWideBreakpoint yang dibuat di atas
+                final columns = constraints.maxWidth >= kWideBreakpoint ? 2 : 1;
                 return GridView.count(
-                  shrinkWrap: true, // Agar GridView tidak error di dalam ScrollView
-                  physics: const NeverScrollableScrollPhysics(), // Scroll diatur oleh SingleChildScrollView
+                  shrinkWrap: true, 
+                  physics: const NeverScrollableScrollPhysics(),
                   crossAxisCount: columns,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
-                  childAspectRatio: columns == 1 ? 3.0 : 2.5, // Menyesuaikan tinggi kartu
+                  childAspectRatio: columns == 1 ? 3.0 : 2.5, 
                   children: const [
-                    // 3. Memenuhi Ketentuan: Minimal 4 Kartu Informasi
-                    DashboardCard(title: 'Tugas Selesai', value: '12'),
-                    DashboardCard(title: 'Kehadiran', value: '95%'),
-                    DashboardCard(title: 'SKS Ditempuh', value: '45'),
-                    DashboardCard(title: 'IPK Sementara', value: '3.85'),
+                    // Menggunakan InfoCard
+                    InfoCard(title: 'Tugas Selesai', value: '12'),
+                    InfoCard(title: 'Kehadiran', value: '95%'),
+                    InfoCard(title: 'SKS Ditempuh', value: '45'),
+                    InfoCard(title: 'IPK Sementara', value: '3.85'),
                   ],
                 );
               },
@@ -145,15 +147,15 @@ class AcademicDashboardPage extends StatelessWidget {
   }
 }
 
-class DashboardCard extends StatelessWidget {
-  const DashboardCard({required this.title, required this.value, super.key});
+// Refactoring 1 & 2: Ekstrak menjadi InfoCard yang reusable dan pakai Theme.of(context)
+class InfoCard extends StatelessWidget {
+  const InfoCard({required this.title, required this.value, super.key});
   
   final String title;
   final String value;
 
   @override
   Widget build(BuildContext context) {
-    // Memenuhi Ketentuan: Label aksesibilitas pada informasi penting
     return Semantics(
       label: 'Kartu informasi $title dengan nilai $value',
       child: Card(
@@ -165,14 +167,14 @@ class DashboardCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title, 
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: Theme.of(context).textTheme.titleMedium, // Mengikuti tema
                 ),
               ),
               Text(
                 value, 
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.primary, // Mengikuti tema
                 ),
               ),
             ],
