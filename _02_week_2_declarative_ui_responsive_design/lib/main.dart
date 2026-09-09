@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-void main() => runApp(const DashboardApp());
+void main() => runApp(const AcademicOverviewApp());
 
-class DashboardApp extends StatefulWidget {
-  const DashboardApp({super.key});
+class AcademicOverviewApp extends StatefulWidget {
+  const AcademicOverviewApp({super.key});
 
   @override
-  State<DashboardApp> createState() => _DashboardAppState();
+  State<AcademicOverviewApp> createState() => _AcademicOverviewAppState();
 }
 
-class _DashboardAppState extends State<DashboardApp> {
+class _AcademicOverviewAppState extends State<AcademicOverviewApp> {
   bool isDark = false;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Academic Overview',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.indigo,
+        brightness: Brightness.light,
+      ),
       darkTheme: ThemeData(
-          useMaterial3: true,
-          brightness: Brightness.dark,
-          colorSchemeSeed: Colors.indigo),
+        useMaterial3: true,
+        colorSchemeSeed: Colors.indigo,
+        brightness: Brightness.dark,
+      ),
       themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
-      home: DashboardPage(
+      home: AcademicDashboardPage(
         isDark: isDark,
         onDarkChanged: (value) => setState(() => isDark = value),
       ),
@@ -31,12 +37,13 @@ class _DashboardAppState extends State<DashboardApp> {
   }
 }
 
-class DashboardPage extends StatelessWidget {
-  const DashboardPage({
+class AcademicDashboardPage extends StatelessWidget {
+  const AcademicDashboardPage({
     required this.isDark,
     required this.onDarkChanged,
     super.key,
   });
+
   final bool isDark;
   final ValueChanged<bool> onDarkChanged;
 
@@ -44,41 +51,95 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student Dashboard'),
+        title: const Text('Academic Overview'),
         actions: [
           Row(
             children: [
               Icon(isDark ? Icons.dark_mode : Icons.light_mode),
-              const SizedBox(width: 4),
+              const SizedBox(width: 8),
+              // Memenuhi Ketentuan: Label Aksesibilitas
               Semantics(
-                label: 'Tombol untuk mengganti tema gelap dan terang',
+                label: 'Tombol ganti tema gelap atau terang',
                 child: CupertinoSwitch(
                   value: isDark,
                   onChanged: onDarkChanged,
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 16),
             ],
           ),
         ],
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          final columns = constraints.maxWidth >= 700 ? 2 : 1;
-          return GridView.count(
-            padding: const EdgeInsets.all(16),
-            crossAxisCount: columns,
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            childAspectRatio: 2.6,
-            children: const [
-              DashboardCard(title: 'Assignments', value: '8'),
-              DashboardCard(title: 'Attendance', value: '92%'),
-              DashboardCard(title: 'Portfolio', value: 'Ready'),
-              DashboardCard(title: 'Current week', value: '02'),
-            ],
-          );
-        },
+      // Menggunakan SingleChildScrollView agar bisa di-scroll jika layar terlalu kecil
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            // 1. Memenuhi Ketentuan: Header Profil (Row, Column, Expanded, Container)
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primaryContainer,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    child: Icon(Icons.person,
+                        size: 35, color: Theme.of(context).colorScheme.onPrimary),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'MOKHAMAD RIZKI HADIONO SINGGIH',
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                              ),
+                        ),
+                        Text(
+                          'TI2F - PWL',
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            
+            const SizedBox(height: 24),
+
+            // 2. Memenuhi Ketentuan: Layout Responsif 1 atau 2 Kolom
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final columns = constraints.maxWidth >= 700 ? 2 : 1;
+                return GridView.count(
+                  shrinkWrap: true, // Agar GridView tidak error di dalam ScrollView
+                  physics: const NeverScrollableScrollPhysics(), // Scroll diatur oleh SingleChildScrollView
+                  crossAxisCount: columns,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  childAspectRatio: columns == 1 ? 3.0 : 2.5, // Menyesuaikan tinggi kartu
+                  children: const [
+                    // 3. Memenuhi Ketentuan: Minimal 4 Kartu Informasi
+                    DashboardCard(title: 'Tugas Selesai', value: '12'),
+                    DashboardCard(title: 'Kehadiran', value: '95%'),
+                    DashboardCard(title: 'SKS Ditempuh', value: '45'),
+                    DashboardCard(title: 'IPK Sementara', value: '3.85'),
+                  ],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -86,20 +147,38 @@ class DashboardPage extends StatelessWidget {
 
 class DashboardCard extends StatelessWidget {
   const DashboardCard({required this.title, required this.value, super.key});
+  
   final String title;
   final String value;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Row(children: [
-          Expanded(child: Text(title)),
-          Text(value, style: Theme.of(context).textTheme.headlineSmall),
-        ]),
+    // Memenuhi Ketentuan: Label aksesibilitas pada informasi penting
+    return Semantics(
+      label: 'Kartu informasi $title dengan nilai $value',
+      child: Card(
+        elevation: 2,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  title, 
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
+              Text(
+                value, 
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
-
