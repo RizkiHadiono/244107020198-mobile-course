@@ -26,3 +26,33 @@ class TodoListNotifier extends Notifier<List<Todo>> {
 
 final todoListProvider =
     NotifierProvider<TodoListNotifier, List<Todo>>(TodoListNotifier.new);
+
+// 1. Enum untuk status filter
+enum TodoFilter { all, active, completed }
+
+// 2. Notifier untuk menyimpan status filter
+class TodoFilterNotifier extends Notifier<TodoFilter> {
+  @override
+  TodoFilter build() => TodoFilter.all;
+
+  void setFilter(TodoFilter filter) {
+    state = filter;
+  }
+}
+
+final todoFilterProvider = NotifierProvider<TodoFilterNotifier, TodoFilter>(TodoFilterNotifier.new);
+
+// 3. Provider turunan yang membaca list todo DAN status filter
+final filteredTodosProvider = Provider<List<Todo>>((ref) {
+  final filter = ref.watch(todoFilterProvider);
+  final todos = ref.watch(todoListProvider);
+
+  switch (filter) {
+    case TodoFilter.active:
+      return todos.where((todo) => !todo.done).toList();
+    case TodoFilter.completed:
+      return todos.where((todo) => todo.done).toList();
+    case TodoFilter.all:
+      return todos;
+  }
+});

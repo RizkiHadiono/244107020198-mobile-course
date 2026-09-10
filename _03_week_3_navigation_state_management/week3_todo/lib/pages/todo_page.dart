@@ -1,39 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/todo_provider.dart';
+import '../widgets/todo_tile.dart';
 
 class TodoPage extends ConsumerWidget {
   const TodoPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final todos = ref.watch(todoListProvider);
+    // PERHATIKAN: Sekarang kita memantau filteredTodosProvider, bukan todoListProvider
+    final todos = ref.watch(filteredTodosProvider);
+    final filter = ref.watch(todoFilterProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('ToDo Riverpod')),
+      appBar: AppBar(
+        title: const Text('Daftar Tugas'),
+        actions: [
+          // Tombol Filter di pojok kanan atas
+          PopupMenuButton<TodoFilter>(
+            initialValue: filter,
+            icon: const Icon(Icons.filter_list),
+            // INI YANG BERUBAH: Menggunakan setFilter(value)
+            onSelected: (value) => ref.read(todoFilterProvider.notifier).setFilter(value), 
+            itemBuilder: (context) => const [
+              PopupMenuItem(value: TodoFilter.all, child: Text('Semua')),
+              PopupMenuItem(value: TodoFilter.active, child: Text('Belum Selesai')),
+              PopupMenuItem(value: TodoFilter.completed, child: Text('Sudah Selesai')),
+            ],
+          )
+        ],
+      ),
       body: todos.isEmpty
           ? const Center(child: Text('Belum ada tugas'))
           : ListView.builder(
               itemCount: todos.length,
-              itemBuilder: (context, index) => ListTile(
-                leading: Checkbox(
-                  value: todos[index].done,
-                  onChanged: (_) =>
-                      ref.read(todoListProvider.notifier).toggle(index),
-                ),
-                title: Text(
-                  todos[index].title,
-                  style: TextStyle(
-                      decoration: todos[index].done
-                          ? TextDecoration.lineThrough
-                          : null),
-                ),
-                trailing: IconButton(
-                  icon: const Icon(Icons.delete),
-                  onPressed: () =>
-                      ref.read(todoListProvider.notifier).remove(index),
-                ),
-              ),
+              itemBuilder: (context, index) {
+                // Mencari index asli agar proses centang/hapus tidak salah target saat difilter
+                final actualTodo = todos[index];
+                final actualIndex = ref.read(todoListProvider).indexOf(actualTodo);
+
+                return TodoTile(
+                  todo: actualTodo,
+                  index: actualIndex,
+                );
+              },
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDialog(context, ref),
@@ -57,9 +67,7 @@ class TodoPage extends ConsumerWidget {
           FilledButton(
             onPressed: () {
               if (controller.text.trim().isNotEmpty) {
-                ref
-                    .read(todoListProvider.notifier)
-                    .add(controller.text.trim());
+                ref.read(todoListProvider.notifier).add(controller.text.trim());
               }
               Navigator.pop(context);
             },
