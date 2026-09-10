@@ -1,58 +1,79 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Todo {
-  Todo(this.title, {this.done = false});
+  final String id;
   final String title;
+  final String category;
   final bool done;
 
-  Todo copyWith({String? title, bool? done}) =>
-      Todo(title ?? this.title, done: done ?? this.done);
+  Todo({
+    required this.id,
+    required this.title,
+    required this.category,
+    this.done = false,
+  });
+
+  Todo copyWith({String? title, String? category, bool? done}) {
+    return Todo(
+      id: id,
+      title: title ?? this.title,
+      category: category ?? this.category,
+      done: done ?? this.done,
+    );
+  }
 }
 
 class TodoListNotifier extends Notifier<List<Todo>> {
   @override
-  List<Todo> build() => const [];
+  List<Todo> build() => [
+        Todo(id: '1', title: 'Rancang UI Dashboard', category: 'Desain', done: true),
+        Todo(id: '2', title: 'Implementasi Riverpod State', category: 'Koding', done: false),
+      ];
 
-  void add(String title) => state = [...state, Todo(title)];
-
-  void toggle(int index) {
-    final todos = [...state];
-    todos[index] = todos[index].copyWith(done: !todos[index].done);
-    state = todos;
+  void add(String title, String category) {
+    state = [
+      ...state,
+      Todo(id: DateTime.now().toString(), title: title, category: category),
+    ];
   }
 
-  void remove(int index) => state = [...state]..removeAt(index);
+  void toggle(String id) {
+    state = [
+      for (final todo in state)
+        if (todo.id == id) todo.copyWith(done: !todo.done) else todo
+    ];
+  }
+
+  void remove(String id) {
+    state = state.where((todo) => todo.id != id).toList();
+  }
 }
 
-final todoListProvider =
-    NotifierProvider<TodoListNotifier, List<Todo>>(TodoListNotifier.new);
+final todoListProvider = NotifierProvider<TodoListNotifier, List<Todo>>(TodoListNotifier.new);
 
-// 1. Enum untuk status filter
-enum TodoFilter { all, active, completed }
+enum TodoCategoryFilter { all, desain, koding, lainnya }
 
-// 2. Notifier untuk menyimpan status filter
-class TodoFilterNotifier extends Notifier<TodoFilter> {
+class TodoFilterNotifier extends Notifier<TodoCategoryFilter> {
   @override
-  TodoFilter build() => TodoFilter.all;
+  TodoCategoryFilter build() => TodoCategoryFilter.all;
 
-  void setFilter(TodoFilter filter) {
-    state = filter;
-  }
+  void setFilter(TodoCategoryFilter filter) => state = filter;
 }
 
-final todoFilterProvider = NotifierProvider<TodoFilterNotifier, TodoFilter>(TodoFilterNotifier.new);
+final todoFilterProvider = NotifierProvider<TodoFilterNotifier, TodoCategoryFilter>(TodoFilterNotifier.new);
 
-// 3. Provider turunan yang membaca list todo DAN status filter
 final filteredTodosProvider = Provider<List<Todo>>((ref) {
   final filter = ref.watch(todoFilterProvider);
   final todos = ref.watch(todoListProvider);
 
   switch (filter) {
-    case TodoFilter.active:
-      return todos.where((todo) => !todo.done).toList();
-    case TodoFilter.completed:
-      return todos.where((todo) => todo.done).toList();
-    case TodoFilter.all:
+    case TodoCategoryFilter.desain:
+      return todos.where((t) => t.category == 'Desain').toList();
+    case TodoCategoryFilter.koding:
+      return todos.where((t) => t.category == 'Koding').toList();
+    case TodoCategoryFilter.lainnya:
+      return todos.where((t) => t.category == 'Lainnya').toList();
+    case TodoCategoryFilter.all:
       return todos;
   }
 });

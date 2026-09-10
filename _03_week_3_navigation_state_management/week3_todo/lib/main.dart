@@ -6,21 +6,14 @@ import 'pages/stats_page.dart';
 
 void main() => runApp(const ProviderScope(child: MyApp()));
 
-// Konfigurasi GoRouter dengan Bottom Navigation (ShellRoute)
 final _router = GoRouter(
   initialLocation: '/',
   routes: [
     ShellRoute(
-      builder: (context, state, child) => MainScreen(child: child),
+      builder: (context, state, child) => MainDashboardShell(child: child),
       routes: [
-        GoRoute(
-          path: '/',
-          builder: (context, state) => const TodoPage(),
-        ),
-        GoRoute(
-          path: '/stats',
-          builder: (context, state) => const StatsPage(),
-        ),
+        GoRoute(path: '/', builder: (context, state) => const TodoPage()),
+        GoRoute(path: '/stats', builder: (context, state) => const StatsPage()),
       ],
     ),
   ],
@@ -28,30 +21,34 @@ final _router = GoRouter(
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Week 3 - Final',
+      title: 'Industry Task Manager',
       debugShowCheckedModeBanner: false,
       routerConfig: _router,
-      theme: ThemeData(colorSchemeSeed: Colors.teal, useMaterial3: true),
+      theme: ThemeData(
+        colorSchemeSeed: Colors.deepPurple,
+        useMaterial3: true,
+      ),
     );
   }
 }
 
-// Kerangka utama aplikasi yang menampilkan NavigationBar di bawah
-class MainScreen extends StatelessWidget {
+class MainDashboardShell extends StatelessWidget {
   final Widget child;
-  const MainScreen({super.key, required this.child});
+  const MainDashboardShell({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: child,
       bottomNavigationBar: NavigationBar(
-        selectedIndex: _calculateSelectedIndex(context),
-        onDestinationSelected: (int index) {
+        backgroundColor: Colors.white,
+        indicatorColor: Colors.deepPurple.shade100,
+        selectedIndex: _currentIndex(context),
+        onDestinationSelected: (index) {
           if (index == 0) {
             context.go('/');
           } else {
@@ -59,16 +56,24 @@ class MainScreen extends StatelessWidget {
           }
         },
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.list), label: 'ToDo'),
-          NavigationDestination(icon: Icon(Icons.bar_chart), label: 'Stats'),
+          NavigationDestination(
+            icon: Icon(Icons.dashboard_outlined),
+            selectedIcon: Icon(Icons.dashboard, color: Colors.deepPurple),
+            label: 'Workspace',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.bar_chart_outlined),
+            selectedIcon: Icon(Icons.bar_chart, color: Colors.deepPurple),
+            label: 'Statistik',
+          ),
         ],
       ),
     );
   }
 
-  int _calculateSelectedIndex(BuildContext context) {
-    final String location = GoRouterState.of(context).uri.path;
-    if (location.startsWith('/stats')) return 1;
+  int _currentIndex(BuildContext context) {
+    final path = GoRouterState.of(context).uri.path;
+    if (path.startsWith('/stats')) return 1;
     return 0;
   }
 }
