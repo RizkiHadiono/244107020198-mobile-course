@@ -6,9 +6,9 @@ import 'package:go_router/go_router.dart';
 import '../data/repositories/note_repository.dart';
 import '../data/local/note.dart';
 import '../data/sync.dart';
-import 'widgets/note_tile.dart'; // Memanggil NoteTile yang baru dibuat
+import '../data/prefs.dart'; 
+import 'widgets/note_tile.dart';
 
-// --- PROVIDERS ---
 class ForceOfflineNotifier extends Notifier<bool> {
   @override
   bool build() => false;
@@ -28,12 +28,45 @@ final dirtyCountProvider = FutureProvider<int>((ref) async {
   return repo.countDirty();
 });
 
-// --- UI HALAMAN UTAMA ---
-class NotesPage extends ConsumerWidget {
+class NotesPage extends ConsumerStatefulWidget {
   const NotesPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<NotesPage> createState() => _NotesPageState();
+}
+
+class _NotesPageState extends ConsumerState<NotesPage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() => 
+      ref.read(prefsRepositoryProvider).saveLastOpenedTime()
+    );
+  }
+
+  Future<void> _performSync(bool isOffline) async {
+    try {
+      final syncService = SyncService(Dio());
+      final repo = ref.read(noteRepositoryProvider);
+      await syncService.syncNotes(repo, isOffline);
+      ref.invalidate(dirtyCountProvider); 
+      ref.invalidate(notesProvider);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Sinkronisasi berhasil!'), backgroundColor: Colors.green),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
+        );
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final notesAsync = ref.watch(notesProvider);
     final dirtyCountAsync = ref.watch(dirtyCountProvider);
     final isOffline = ref.watch(forceOfflineProvider);
@@ -42,104 +75,127 @@ class NotesPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Offline Notes'),
         actions: [
-          // Indikator Sync
           dirtyCountAsync.when(
-            data: (count) {
-              if (count == 0) return const SizedBox.shrink();
-              return Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Center(
-                  child: Badge(
-                    label: Text(count.toString()),
-                    child: const Icon(Icons.sync_problem),
-                  ),
-                ),
-              );
-            },
+            data: (count) => count > 0 
+                ? Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Center(
+                      child: Badge(
+                        label: Text(count.toString()),
+                        child: const Icon(Icons.cloud_off, color: Colors.orange),
+                      ),
+                    ),
+                  )
+                : const SizedBox.shrink(),
             loading: () => const SizedBox.shrink(),
             error: (error, stack) => const SizedBox.shrink(),
           ),
-          // Tombol ke halaman Settings
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () {
-              context.push('/settings');
-            },
+            onPressed: () => context.push('/settings'),
           ),
-          const SizedBox(width: 8),
         ],
       ),
       body: Column(
         children: [
-          SwitchListTile(
-            title: const Text('Force Offline Mode'),
-            subtitle: const Text('Simulasi matikan internet'),
-            value: isOffline,
-            onChanged: (value) {
-              ref.read(forceOfflineProvider.notifier).toggle(value);
-            },
+          Container(
+            color: isOffline ? Colors.red.withValues(alpha: 0.1) : Colors.transparent,
+            child: SwitchListTile(
+              title: const Text('Mode Pesawat (Simulasi)'),
+              subtitle: Text(isOffline ? 'Offline - Perubahan akan masuk antrean' : 'Online - Terhubung ke server'),
+              value: isOffline,
+              activeThumbColor: Colors.red,
+              onChanged: (value) => ref.read(forceOfflineProvider.notifier).toggle(value),
+            ),
           ),
+          
+          // Tombol Sync dimunculkan kembali di sini
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FilledButton.icon(
               icon: const Icon(Icons.sync),
               label: const Text('Sync Notes'),
-              onPressed: () async {
-                try {
-                  final syncService = SyncService(Dio());
-                  final repo = ref.read(noteRepositoryProvider);
-                  
-                  await syncService.syncNotes(repo, isOffline);
-                  
-                  ref.invalidate(dirtyCountProvider); 
-                  ref.invalidate(notesProvider);
-                  
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Sinkronisasi berhasil!')),
-                    );
-                  }
-                } catch (e) {
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(e.toString())),
-                    );
-                  }
-                }
-              },
+              onPressed: () => _performSync(isOffline),
             ),
           ),
-          const Divider(),
+          const Divider(height: 1),
+
           Expanded(
-            child: notesAsync.when(
-              data: (notes) {
-                if (notes.isEmpty) {
-                  return const Center(child: Text('Belum ada catatan.'));
-                }
-                return ListView.builder(
-                  itemCount: notes.length,
-                  itemBuilder: (context, index) {
-                    final note = notes[index];
-                    // Menggunakan NoteTile hasil refactoring
-                    return NoteTile(note: note); 
-                  },
-                );
-              },
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (error, stack) => Center(child: Text('Error: $error')),
+            child: RefreshIndicator(
+              onRefresh: () => _performSync(isOffline),
+              child: notesAsync.when(
+                data: (notes) {
+                  if (notes.isEmpty) {
+                    return ListView(
+                      children: const [
+                        SizedBox(height: 100),
+                        Center(child: Text('Belum ada catatan.\nTarik ke bawah atau tekan Sync.', textAlign: TextAlign.center)),
+                      ],
+                    );
+                  }
+                  return ListView.separated(
+                    itemCount: notes.length,
+                    separatorBuilder: (context, index) => const Divider(height: 1),
+                    itemBuilder: (context, index) => NoteTile(note: notes[index]),
+                  );
+                },
+                loading: () => const Center(child: CircularProgressIndicator()),
+                error: (error, stack) => Center(child: Text('Error: $error')),
+              ),
             ),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final repo = ref.read(noteRepositoryProvider);
-          await repo.addNote(title: 'Catatan Baru ${DateTime.now().second}');
-          
-          ref.invalidate(notesProvider);
-          ref.invalidate(dirtyCountProvider);
+floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          final titleController = TextEditingController();
+          final bodyController = TextEditingController();
+
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Buat Catatan Baru'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextField(
+                    controller: titleController,
+                    decoration: const InputDecoration(labelText: 'Judul'),
+                  ),
+                  TextField(
+                    controller: bodyController,
+                    decoration: const InputDecoration(labelText: 'Isi catatan'),
+                  ),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Batal'),
+                ),
+                FilledButton(
+                  onPressed: () async {
+                    if (titleController.text.trim().isEmpty) return;
+                    
+                    final repo = ref.read(noteRepositoryProvider);
+                    await repo.addNote(
+                      title: titleController.text,
+                      body: bodyController.text, // Pastikan NoteRepository addNote menerima body
+                    );
+                    
+                    ref.invalidate(notesProvider);
+                    ref.invalidate(dirtyCountProvider);
+                    
+                    if (context.mounted) Navigator.pop(context);
+                  },
+                  child: const Text('Simpan'),
+                ),
+              ],
+            ),
+          );
         },
-        child: const Icon(Icons.add),
+        icon: const Icon(Icons.add),
+        label: const Text('Catatan'),
       ),
     );
   }

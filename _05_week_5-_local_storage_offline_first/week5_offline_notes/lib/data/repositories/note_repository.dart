@@ -10,8 +10,9 @@ class NoteRepository {
 
   Future<List<Note>> fetchNotes() async {
     final db = await _openDb();
-    final rows = await db.query('notes', orderBy: 'updated_at DESC');
-    return rows.map(Note.fromMap).toList();
+    // Mengambil data dengan urutan dari yang paling baru diubah (DESC)
+    final maps = await db.query('notes', orderBy: 'updated_at DESC'); 
+    return maps.map((e) => Note.fromMap(e)).toList();
   }
 
   Future<Note> addNote({required String title, String body = ''}) async {
@@ -31,10 +32,24 @@ class NoteRepository {
       dirty: true,
     );
   }
-
+  // --- UPDATE ---
+  Future<void> updateNote(Note note) async {
+    final db = await _openDb();
+    await db.update(
+      'notes',
+      note.toMap(),
+      where: 'id = ?',
+      whereArgs: [note.id],
+    );
+  }
+  // --- DELETE ---
   Future<void> deleteNote(int id) async {
     final db = await _openDb();
-    await db.delete('notes', where: 'id = ?', whereArgs: [id]);
+    await db.delete(
+      'notes',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 
   Future<int> countDirty() async {
