@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart';
+import 'package:go_router/go_router.dart';
 
 import '../data/repositories/note_repository.dart';
 import '../data/local/note.dart';
 import '../data/sync.dart';
+import 'widgets/note_tile.dart'; // Memanggil NoteTile yang baru dibuat
 
-// 1. NotifierProvider untuk Mode Offline (Cara Modern Riverpod)
+// --- PROVIDERS ---
 class ForceOfflineNotifier extends Notifier<bool> {
   @override
   bool build() => false;
-
-  void toggle(bool value) {
-    state = value;
-  }
+  void toggle(bool value) => state = value;
 }
 
 final forceOfflineProvider = NotifierProvider<ForceOfflineNotifier, bool>(ForceOfflineNotifier.new);
-
-// 2. Provider Database dan Data
 final noteRepositoryProvider = Provider((ref) => NoteRepository());
 
 final notesProvider = FutureProvider<List<Note>>((ref) async {
@@ -31,7 +28,7 @@ final dirtyCountProvider = FutureProvider<int>((ref) async {
   return repo.countDirty();
 });
 
-// 3. UI Utama
+// --- UI HALAMAN UTAMA ---
 class NotesPage extends ConsumerWidget {
   const NotesPage({super.key});
 
@@ -45,12 +42,12 @@ class NotesPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Offline Notes'),
         actions: [
-          // Badge Antrean Sync
+          // Indikator Sync
           dirtyCountAsync.when(
             data: (count) {
               if (count == 0) return const SizedBox.shrink();
               return Padding(
-                padding: const EdgeInsets.only(right: 16.0),
+                padding: const EdgeInsets.only(right: 8.0),
                 child: Center(
                   child: Badge(
                     label: Text(count.toString()),
@@ -62,6 +59,14 @@ class NotesPage extends ConsumerWidget {
             loading: () => const SizedBox.shrink(),
             error: (error, stack) => const SizedBox.shrink(),
           ),
+          // Tombol ke halaman Settings
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              context.push('/settings');
+            },
+          ),
+          const SizedBox(width: 8),
         ],
       ),
       body: Column(
@@ -105,7 +110,6 @@ class NotesPage extends ConsumerWidget {
             ),
           ),
           const Divider(),
-          // Daftar Catatan
           Expanded(
             child: notesAsync.when(
               data: (notes) {
@@ -116,13 +120,8 @@ class NotesPage extends ConsumerWidget {
                   itemCount: notes.length,
                   itemBuilder: (context, index) {
                     final note = notes[index];
-                    return ListTile(
-                      title: Text(note.title),
-                      subtitle: Text(note.updatedAt.toString().split('.')[0]),
-                      trailing: note.dirty 
-                          ? const Icon(Icons.cloud_off, color: Colors.orange)
-                          : const Icon(Icons.cloud_done, color: Colors.green),
-                    );
+                    // Menggunakan NoteTile hasil refactoring
+                    return NoteTile(note: note); 
                   },
                 );
               },
