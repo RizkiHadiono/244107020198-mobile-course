@@ -23,6 +23,9 @@ Berikut adalah daftar materi, tugas, dan praktikum yang tersimpan di dalam repos
 | **Week 1** | Mobile Development Ecosystem & Flutter Setup | ✅ Selesai |
 | **Week 2** | Declarative UI & Responsive Design | ✅ Selesai |
 | **Week 3** | Navigation & State Management | ✅ Selesai |
+| **Week 4** | Networking & REST API Integration | ✅ Selesai |
+| **Week 5** | Local Storage & Offline-First Architecture | ✅ Selesai |
+| **Week 6** | Authentication, Security & FCM Push Notifications | ✅ Selesai |
 
 ---
 
