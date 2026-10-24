@@ -5,11 +5,7 @@ import 'routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-    const ProviderScope(
-      child: CleanArchitectureApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: CleanArchitectureApp()));
 }
 
 class CleanArchitectureApp extends ConsumerWidget {

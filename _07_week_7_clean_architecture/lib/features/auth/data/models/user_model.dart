@@ -18,12 +18,7 @@ class UserModel extends User {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'email': email,
-      'name': name,
-      'token': token,
-    };
+    return {'id': id, 'email': email, 'name': name, 'token': token};
   }
 
   factory UserModel.fromEntity(User user) {
@@ -36,11 +31,6 @@ class UserModel extends User {
   }
 
   User toEntity() {
-    return User(
-      id: id,
-      email: email,
-      name: name,
-      token: token,
-    );
+    return User(id: id, email: email, name: name, token: token);
   }
 }

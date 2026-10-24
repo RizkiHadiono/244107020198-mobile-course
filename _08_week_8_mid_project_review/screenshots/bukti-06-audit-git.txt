@@ -1,0 +1,39 @@
+﻿== git log --oneline -15 ==
+0aea239 Week 07 | Clean Architecture
+c023970 Laporan Praktikum Week-6 Authentication, Security & FCM
+5cb07c4 #06 | Authentication, Security & FCM
+253fbb2 Laporan Praktikum Week 5: Local Storage & Offline-First
+38941c5 Mini project / Industry Challenge
+dea51ed Refactoring, testing, dan error umum
+cbf7d95 AI Challenge
+0118809 Praktikum 1: SharedPreference, Praktikum 2: SQLite dan repository catatan, Praktikum 3: Cache-first dan antrean sync
+f913360 Laporan & Dokumentasi Praktikum Week-4 Networking & REST API
+cb01ce9 Refactoring dan testing
+850aabc AI Challenge
+b873df8 Praktikum 3: Pagination dasar
+61d3738 Merge branch 'main' of https://github.com/RizkiHadiono/244107020198-mobile-course
+e094c3a WEEK- 4 Praktikum 1: Dio dan model data & Praktikum 2: Provider dan error handling
+d3b560c Add Week 3 topic to README
+
+== git branch -a ==
+* main
+  remotes/origin/main
+
+== git status --short ==
+ M _07_week_7_clean_architecture/lib/features/auth/data/models/user_model.dart
+ M _07_week_7_clean_architecture/lib/features/auth/data/repositories/auth_repository_impl.dart
+ M _07_week_7_clean_architecture/lib/features/auth/domain/usecases/login_user.dart
+ M _07_week_7_clean_architecture/lib/features/auth/presentation/pages/login_page.dart
+ M _07_week_7_clean_architecture/lib/features/auth/presentation/providers/auth_providers.dart
+ M _07_week_7_clean_architecture/lib/features/notes/data/models/note_model.dart
+ M _07_week_7_clean_architecture/lib/features/notes/data/repositories/note_repository_impl.dart
+ M _07_week_7_clean_architecture/lib/features/notes/presentation/pages/note_detail_page.dart
+ M _07_week_7_clean_architecture/lib/features/notes/presentation/pages/notes_page.dart
+ M _07_week_7_clean_architecture/lib/features/notes/presentation/providers/notes_providers.dart
+ M _07_week_7_clean_architecture/lib/main.dart
+ M _07_week_7_clean_architecture/lib/routes.dart
+ M _07_week_7_clean_architecture/test/auth_test.dart
+ M _07_week_7_clean_architecture/test/get_notes_test.dart
+?? _07_week_7_clean_architecture/lib/features/notes/domain/usecases/update_note.dart
+?? _07_week_7_clean_architecture/test/update_note_test.dart
+?? _08_week_8_mid_project_review/

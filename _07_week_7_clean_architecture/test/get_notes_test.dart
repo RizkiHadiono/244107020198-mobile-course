@@ -6,10 +6,7 @@ import 'package:week7_clean_architecture/features/notes/domain/usecases/add_note
 import 'package:week7_clean_architecture/features/notes/domain/usecases/get_notes.dart';
 
 class FakeNoteRepository implements NoteRepository {
-  FakeNoteRepository({
-    this.items = const [],
-    this.fail = false,
-  });
+  FakeNoteRepository({this.items = const [], this.fail = false});
 
   final List<Note> items;
   final bool fail;
@@ -72,14 +69,16 @@ class FakeNoteRepository implements NoteRepository {
 void main() {
   group('GetNotes UseCase Unit Tests (Clean Architecture Domain)', () {
     test('GetNotes meneruskan daftar dari repository dengan sukses', () async {
-      final repo = FakeNoteRepository(items: [
-        Note(
-          id: 1,
-          title: 'Arsitektur Bersih',
-          body: 'Prinsip dependensi mengarah ke dalam',
-          updatedAt: DateTime(2026, 9, 27),
-        ),
-      ]);
+      final repo = FakeNoteRepository(
+        items: [
+          Note(
+            id: 1,
+            title: 'Arsitektur Bersih',
+            body: 'Prinsip dependensi mengarah ke dalam',
+            updatedAt: DateTime(2026, 9, 27),
+          ),
+        ],
+      );
       final result = await GetNotes(repo).call();
 
       expect(result.failure, isNull);
@@ -112,20 +111,23 @@ void main() {
       expect(repo.lastAddedNote, isNull);
     });
 
-    test('AddNote memotong whitespace dan berhasil menyimpan catatan valid', () async {
-      final repo = FakeNoteRepository();
-      final addNote = AddNote(repo);
+    test(
+      'AddNote memotong whitespace dan berhasil menyimpan catatan valid',
+      () async {
+        final repo = FakeNoteRepository();
+        final addNote = AddNote(repo);
 
-      final result = await addNote(
-        title: '  Belajar SOLID  ',
-        body: '  Pemisahan layer presentation, domain, data  ',
-      );
+        final result = await addNote(
+          title: '  Belajar SOLID  ',
+          body: '  Pemisahan layer presentation, domain, data  ',
+        );
 
-      expect(result.failure, isNull);
-      expect(result.note, isNotNull);
-      expect(result.note!.title, 'Belajar SOLID');
-      expect(result.note!.body, 'Pemisahan layer presentation, domain, data');
-      expect(repo.lastAddedNote, isNotNull);
-    });
+        expect(result.failure, isNull);
+        expect(result.note, isNotNull);
+        expect(result.note!.title, 'Belajar SOLID');
+        expect(result.note!.body, 'Pemisahan layer presentation, domain, data');
+        expect(repo.lastAddedNote, isNotNull);
+      },
+    );
   });
 }

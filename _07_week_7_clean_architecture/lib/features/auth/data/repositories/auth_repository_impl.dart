@@ -7,7 +7,7 @@ import '../models/user_model.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl({Future<SharedPreferences> Function()? getPrefs})
-      : _getPrefs = getPrefs ?? SharedPreferences.getInstance;
+    : _getPrefs = getPrefs ?? SharedPreferences.getInstance;
 
   final Future<SharedPreferences> Function() _getPrefs;
   static const _keyToken = 'auth_token';
@@ -31,7 +31,8 @@ class AuthRepositoryImpl implements AuthRepository {
         );
       }
 
-      final token = 'jwt-token-session-${DateTime.now().millisecondsSinceEpoch}';
+      final token =
+          'jwt-token-session-${DateTime.now().millisecondsSinceEpoch}';
       final username = email.split('@').first;
       final userId = 'usr_${email.hashCode.abs()}';
 

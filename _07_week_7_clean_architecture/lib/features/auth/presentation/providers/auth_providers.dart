@@ -22,11 +22,7 @@ final logoutUserProvider = Provider<LogoutUser>((ref) {
 
 /// Auth State
 class AuthState {
-  const AuthState({
-    this.user,
-    this.isLoading = false,
-    this.errorMessage,
-  });
+  const AuthState({this.user, this.isLoading = false, this.errorMessage});
 
   final User? user;
   final bool isLoading;
@@ -92,5 +88,6 @@ class AuthNotifier extends Notifier<AuthState> {
   }
 }
 
-final authStateProvider =
-    NotifierProvider<AuthNotifier, AuthState>(AuthNotifier.new);
+final authStateProvider = NotifierProvider<AuthNotifier, AuthState>(
+  AuthNotifier.new,
+);

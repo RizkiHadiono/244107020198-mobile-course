@@ -18,8 +18,13 @@ class NotesPage extends ConsumerWidget {
       context: context,
       builder: (dialogContext) {
         return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: const Text('Buat Catatan Baru', style: TextStyle(fontWeight: FontWeight.bold)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          title: const Text(
+            'Buat Catatan Baru',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -30,7 +35,9 @@ class NotesPage extends ConsumerWidget {
                   decoration: InputDecoration(
                     labelText: 'Judul',
                     hintText: 'Mis. Pertemuan Arsitektur',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -40,7 +47,9 @@ class NotesPage extends ConsumerWidget {
                   decoration: InputDecoration(
                     labelText: 'Isi Catatan',
                     hintText: 'Tulis ringkasan atau detail...',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
               ],
@@ -62,7 +71,9 @@ class NotesPage extends ConsumerWidget {
                   Navigator.pop(dialogContext);
                 }
                 if (!success && context.mounted) {
-                  final err = ref.read(notesNotifierProvider).errorMessage ?? 'Gagal membuat catatan';
+                  final err =
+                      ref.read(notesNotifierProvider).errorMessage ??
+                      'Gagal membuat catatan';
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(err),
@@ -121,7 +132,7 @@ class NotesPage extends ConsumerWidget {
                       ok
                           ? 'Sinkronisasi berhasil! Seluruh antrean terkirim.'
                           : (ref.read(notesNotifierProvider).errorMessage ??
-                              'Gagal sinkronisasi'),
+                                'Gagal sinkronisasi'),
                     ),
                   ),
                 );
@@ -164,8 +175,11 @@ class NotesPage extends ConsumerWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.error_outline_rounded,
-                  size: 48, color: Theme.of(context).colorScheme.error),
+              Icon(
+                Icons.error_outline_rounded,
+                size: 48,
+                color: Theme.of(context).colorScheme.error,
+              ),
               const SizedBox(height: 12),
               Text(
                 state.errorMessage!,

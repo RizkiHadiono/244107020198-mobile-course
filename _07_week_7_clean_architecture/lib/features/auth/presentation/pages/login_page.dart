@@ -12,7 +12,9 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class _LoginPageState extends ConsumerState<LoginPage> {
-  final _emailController = TextEditingController(text: 'student@polinema.ac.id');
+  final _emailController = TextEditingController(
+    text: 'student@polinema.ac.id',
+  );
   final _passwordController = TextEditingController(text: 'secret123');
   bool _obscureText = true;
 
@@ -24,10 +26,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   }
 
   Future<void> _handleLogin() async {
-    final success = await ref.read(authStateProvider.notifier).login(
-          _emailController.text,
-          _passwordController.text,
-        );
+    final success = await ref
+        .read(authStateProvider.notifier)
+        .login(_emailController.text, _passwordController.text);
     if (!mounted) return;
     if (success) {
       context.go('/notes');

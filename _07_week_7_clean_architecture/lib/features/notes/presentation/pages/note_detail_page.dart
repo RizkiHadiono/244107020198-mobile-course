@@ -42,8 +42,9 @@ class _NoteDetailPageState extends ConsumerState<NoteDetailPage> {
       dirty: true,
     );
 
-    final success =
-        await ref.read(notesNotifierProvider.notifier).update(updatedNote);
+    final success = await ref
+        .read(notesNotifierProvider.notifier)
+        .update(updatedNote);
     if (!mounted) return;
     if (success) {
       context.pop();
@@ -141,10 +142,7 @@ class _NoteDetailPageState extends ConsumerState<NoteDetailPage> {
             const SizedBox(height: 16),
             TextField(
               controller: _titleController,
-              style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               decoration: const InputDecoration(
                 hintText: 'Judul Catatan...',
                 border: InputBorder.none,

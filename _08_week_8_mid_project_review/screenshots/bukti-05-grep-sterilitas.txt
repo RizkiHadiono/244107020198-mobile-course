@@ -1,0 +1,9 @@
+﻿== GREP 1: presentation steril dari DB/jaringan langsung ==
+Perintah: git grep -n -E "Dio\(|openDatabase|getDatabasesPath|FlutterSecureStorage|SharedPreferences\.getInstance|jsonDecode" -- "lib/features/*/presentation" "lib/pages"
+Hasil: 0 temuan (exit 1 = tidak ada kecocokan)
+
+== GREP 2: domain & core steril dari framework ==
+Hasil: 0 temuan (exit 1 = tidak ada kecocokan)
+
+== GREP 3: model/data tidak bocor ke UI & domain ==
+Hasil: 0 temuan (exit 1 = tidak ada kecocokan)

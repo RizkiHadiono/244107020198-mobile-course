@@ -17,10 +17,7 @@ class FakeAuthRepository implements AuthRepository {
     required String password,
   }) async {
     if (fail) {
-      return (
-        user: null,
-        failure: const AuthFailure('Kredensial tidak valid'),
-      );
+      return (user: null, failure: const AuthFailure('Kredensial tidak valid'));
     }
     return (
       user: User(
@@ -75,20 +72,23 @@ void main() {
       expect(result.failure!.message, contains('minimal 6 karakter'));
     });
 
-    test('LoginUser berhasil mengembalikan User entity saat kredensial valid', () async {
-      final repo = FakeAuthRepository();
-      final useCase = LoginUser(repo);
+    test(
+      'LoginUser berhasil mengembalikan User entity saat kredensial valid',
+      () async {
+        final repo = FakeAuthRepository();
+        final useCase = LoginUser(repo);
 
-      final result = await useCase(
-        email: 'student@polinema.ac.id',
-        password: 'secretPassword123',
-      );
+        final result = await useCase(
+          email: 'student@polinema.ac.id',
+          password: 'secretPassword123',
+        );
 
-      expect(result.failure, isNull);
-      expect(result.user, isNotNull);
-      expect(result.user!.email, 'student@polinema.ac.id');
-      expect(result.user!.isAuthenticated, isTrue);
-    });
+        expect(result.failure, isNull);
+        expect(result.user, isNotNull);
+        expect(result.user!.email, 'student@polinema.ac.id');
+        expect(result.user!.isAuthenticated, isTrue);
+      },
+    );
   });
 
   group('LogoutUser UseCase Tests', () {

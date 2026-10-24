@@ -51,10 +51,7 @@ class NoteRepositoryImpl implements NoteRepository {
         failure: null,
       );
     } catch (e) {
-      return (
-        note: null,
-        failure: LocalFailure('Gagal menyimpan catatan: $e'),
-      );
+      return (note: null, failure: LocalFailure('Gagal menyimpan catatan: $e'));
     }
   }
 
@@ -79,7 +76,9 @@ class NoteRepositoryImpl implements NoteRepository {
       if (rowsUpdated == 0) {
         return (
           success: false,
-          failure: const LocalFailure('Catatan tidak ditemukan untuk diperbarui'),
+          failure: const LocalFailure(
+            'Catatan tidak ditemukan untuk diperbarui',
+          ),
         );
       }
       return (success: true, failure: null);

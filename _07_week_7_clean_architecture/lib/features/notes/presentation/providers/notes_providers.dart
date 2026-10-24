@@ -6,6 +6,7 @@ import '../../domain/entities/note.dart';
 import '../../domain/repositories/note_repository.dart';
 import '../../domain/usecases/add_note.dart';
 import '../../domain/usecases/get_notes.dart';
+import '../../domain/usecases/update_note.dart';
 
 /// Data layer: NoteRepository abstraction injected with database opener
 final noteRepositoryProvider = Provider<NoteRepository>((ref) {
@@ -19,6 +20,10 @@ final getNotesProvider = Provider<GetNotes>((ref) {
 
 final addNoteProvider = Provider<AddNote>((ref) {
   return AddNote(ref.watch(noteRepositoryProvider));
+});
+
+final updateNoteProvider = Provider<UpdateNote>((ref) {
+  return UpdateNote(ref.watch(noteRepositoryProvider));
 });
 
 /// Dirty note count provider (monitoring sync queue)
@@ -96,8 +101,8 @@ class NotesNotifier extends Notifier<NotesState> {
   }
 
   Future<bool> update(Note note) async {
-    final repo = ref.read(noteRepositoryProvider);
-    final result = await repo.updateNote(note);
+    final updateNote = ref.read(updateNoteProvider);
+    final result = await updateNote(note);
     if (result.failure != null) {
       state = state.copyWith(errorMessage: result.failure!.message);
       return false;
@@ -136,5 +141,6 @@ class NotesNotifier extends Notifier<NotesState> {
   }
 }
 
-final notesNotifierProvider =
-    NotifierProvider<NotesNotifier, NotesState>(NotesNotifier.new);
+final notesNotifierProvider = NotifierProvider<NotesNotifier, NotesState>(
+  NotesNotifier.new,
+);
