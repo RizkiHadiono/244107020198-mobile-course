@@ -6,6 +6,7 @@ import '../../domain/entities/note.dart';
 import '../../domain/repositories/note_repository.dart';
 import '../../domain/usecases/add_note.dart';
 import '../../domain/usecases/get_notes.dart';
+import '../../domain/usecases/search_notes.dart';
 import '../../domain/usecases/update_note.dart';
 
 /// Data layer: NoteRepository abstraction injected with database opener
@@ -26,6 +27,10 @@ final updateNoteProvider = Provider<UpdateNote>((ref) {
   return UpdateNote(ref.watch(noteRepositoryProvider));
 });
 
+final searchNotesProvider = Provider<SearchNotes>((ref) {
+  return const SearchNotes();
+});
+
 /// Dirty note count provider (monitoring sync queue)
 final dirtyNotesCountProvider = FutureProvider<int>((ref) async {
   final repo = ref.watch(noteRepositoryProvider);
@@ -42,21 +47,25 @@ class NotesState {
     required this.notes,
     this.isLoading = false,
     this.errorMessage,
+    this.searchQuery = '',
   });
 
   final List<Note> notes;
   final bool isLoading;
   final String? errorMessage;
+  final String searchQuery;
 
   NotesState copyWith({
     List<Note>? notes,
     bool? isLoading,
     String? errorMessage,
+    String? searchQuery,
   }) {
     return NotesState(
       notes: notes ?? this.notes,
       isLoading: isLoading ?? this.isLoading,
       errorMessage: errorMessage,
+      searchQuery: searchQuery ?? this.searchQuery,
     );
   }
 }
@@ -86,6 +95,10 @@ class NotesNotifier extends Notifier<NotesState> {
         errorMessage: null,
       );
     }
+  }
+
+  void setSearchQuery(String query) {
+    state = state.copyWith(searchQuery: query);
   }
 
   Future<bool> add({required String title, String body = ''}) async {
@@ -144,3 +157,11 @@ class NotesNotifier extends Notifier<NotesState> {
 final notesNotifierProvider = NotifierProvider<NotesNotifier, NotesState>(
   NotesNotifier.new,
 );
+
+/// Provider turunan (reaktif): daftar catatan terfilter oleh query pencarian.
+/// UI me-watch provider ini, sehingga daftar otomatis ter-update saat
+/// state.notes atau state.searchQuery berubah — bukan via ref.read getter.
+final visibleNotesProvider = Provider<List<Note>>((ref) {
+  final state = ref.watch(notesNotifierProvider);
+  return ref.read(searchNotesProvider).call(state.notes, state.searchQuery);
+});

@@ -1,0 +1,2 @@
+﻿Formatted 30 files (0 changed) in 0.23 seconds.
+exit code: 0

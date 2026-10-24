@@ -7,8 +7,21 @@ import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../domain/entities/note.dart';
 import '../providers/notes_providers.dart';
 
-class NotesPage extends ConsumerWidget {
+class NotesPage extends ConsumerStatefulWidget {
   const NotesPage({super.key});
+
+  @override
+  ConsumerState<NotesPage> createState() => _NotesPageState();
+}
+
+class _NotesPageState extends ConsumerState<NotesPage> {
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   void _showAddNoteDialog(BuildContext context, WidgetRef ref) {
     final titleController = TextEditingController();
@@ -91,7 +104,7 @@ class NotesPage extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final state = ref.watch(notesNotifierProvider);
     final dirtyCountAsync = ref.watch(dirtyNotesCountProvider);
     final authUser = ref.watch(authStateProvider).user;
@@ -227,21 +240,89 @@ class NotesPage extends ConsumerWidget {
       );
     }
 
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      itemCount: state.notes.length,
-      itemBuilder: (context, index) {
-        final note = state.notes[index];
-        return _NoteItemCard(
-          note: note,
-          onTap: () => context.push('/notes/${note.id}', extra: note),
-          onDelete: () async {
-            if (note.id != null) {
-              await ref.read(notesNotifierProvider.notifier).delete(note.id!);
-            }
-          },
-        );
-      },
+    // Daftar terfilter oleh query pencarian via provider turunan (reaktif).
+    final visible = ref.watch(visibleNotesProvider);
+    final isSearching = state.searchQuery.trim().isNotEmpty;
+
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+          child: TextField(
+            key: const Key('notesSearchField'),
+            controller: _searchController,
+            onChanged: (value) =>
+                ref.read(notesNotifierProvider.notifier).setSearchQuery(value),
+            decoration: InputDecoration(
+              hintText: 'Cari judul catatan...',
+              prefixIcon: const Icon(Icons.search_rounded),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              isDense: true,
+            ),
+          ),
+        ),
+        Expanded(
+          child: visible.isEmpty
+              ? Center(
+                  key: const Key('notesSearchEmptyState'),
+                  child: Padding(
+                    padding: const EdgeInsets.all(32.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.search_off_rounded,
+                          size: 72,
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          isSearching
+                              ? 'Tidak ada catatan yang cocok'
+                              : 'Belum ada catatan',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        if (isSearching) ...[
+                          const SizedBox(height: 6),
+                          Text(
+                            'Coba kata kunci lain untuk "${state.searchQuery.trim()}".',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(color: Colors.grey),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                )
+              : ListView.builder(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                  itemCount: visible.length,
+                  itemBuilder: (context, index) {
+                    final note = visible[index];
+                    return _NoteItemCard(
+                      note: note,
+                      onTap: () =>
+                          context.push('/notes/${note.id}', extra: note),
+                      onDelete: () async {
+                        if (note.id != null) {
+                          await ref
+                              .read(notesNotifierProvider.notifier)
+                              .delete(note.id!);
+                        }
+                      },
+                    );
+                  },
+                ),
+        ),
+      ],
     );
   }
 }

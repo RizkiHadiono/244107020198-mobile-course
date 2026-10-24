@@ -1,0 +1,9 @@
+﻿== GREP: domain steril dari framework (fitur search) ==
+Hasil: 0 temuan (exit 1 = tidak ada kecocokan)
+
+== GREP: visibleNotesProvider (reaktif) dipakai UI via ref.watch ==
+lib/features/notes/presentation/pages/notes_page.dart:244:    final visible = ref.watch(visibleNotesProvider);
+lib/features/notes/presentation/providers/notes_providers.dart:164:final visibleNotesProvider = Provider<List<Note>>((ref) {
+
+== GREP: getter visibleNotes lama sudah dihapus ==
+Hasil: 0 temuan (exit 1 = getter lama hilang)

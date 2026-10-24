@@ -28,6 +28,21 @@ String sanitizeInput(String input) {
   return input.trim();
 }
 
+/// Memfilter daftar catatan berdasarkan judul (case-insensitive).
+/// Query dikosongkan dulu dengan [sanitizeInput]; query kosong mengembalikan
+/// semua catatan. Murni Dart — tanpa Flutter/SQLite — agar bisa diunit-test.
+List<T> filterByTitle<T>(
+  List<T> items,
+  String query,
+  String Function(T) getTitle,
+) {
+  final q = sanitizeInput(query).toLowerCase();
+  if (q.isEmpty) return List<T>.from(items);
+  return items
+      .where((item) => getTitle(item).toLowerCase().contains(q))
+      .toList();
+}
+
 String _monthName(int month) {
   const months = [
     'Jan',

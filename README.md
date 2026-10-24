@@ -28,6 +28,7 @@ Berikut adalah daftar materi, tugas, dan praktikum yang tersimpan di dalam repos
 | **Week 6** | Authentication, Security & FCM Push Notifications | ✅ Selesai |
 | **Week 7** | Clean Architecture (Feature-First) | ✅ Selesai |
 | **Week 8** | Mid Project Review & Code Review | ✅ Selesai |
+| **Week 9** | AI-Assisted Development / Vibe Coding | ✅ Selesai |
 
 ---
 
