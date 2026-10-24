@@ -33,12 +33,12 @@ Pada tahap ini, diimplementasikan penanganan notifikasi pesan gabungan (*notific
   2. **Background:** Banner notifikasi sistem muncul di tray, dan klik di-handle melalui `onMessageOpenedApp` untuk mengarahkan pengguna ke rute pengumuman.
   3. **Terminated:** Aplikasi mati total yang dibuka melalui notifikasi ditangani oleh `getInitialMessage()` di `main()`, langsung mengarahkan layar ke detail pengumuman.
 
-![Praktikum 6](Screenshots/1.png)  
-![Praktikum 6](Screenshots/2.png)
-![Praktikum 6](Screenshots/3.png)
-![Praktikum 6](Screenshots/4.png)
-![Praktikum 6](Screenshots/5.png)
-![Praktikum 6](Screenshots/6.png)
+![Praktikum 6](../Screenshots/1.png)  
+![Praktikum 6](../Screenshots/2.png)
+![Praktikum 6](../Screenshots/3.png)
+![Praktikum 6](../Screenshots/4.png)
+![Praktikum 6](../Screenshots/5.png)
+![Praktikum 6](../Screenshots/6.png)
 
 ---
 
@@ -96,9 +96,9 @@ Setelah fitur autentikasi dan push notification berjalan, struktur kode dirapika
 * **Cek Kebersihan Kode:** Menjalankan `flutter analyze`. Hasil akhir: No issues found!
 * **Automated Testing:** Membuat pengujian unit di `test/auth_push_test.dart` menggunakan `FakeTokenStore`. Pengujian membuktikan parsing rute FCM tahan data null/tanpa slash, payload membawa ID pengumuman, dan sesi dibersihkan saat refresh token gagal.
 
-![Praktikum 6](Screenshots/9.png)
-![Praktikum 6](Screenshots/7.png)
-![Praktikum 6](Screenshots/8.png)
+![Praktikum 6](../Screenshots/9.png)
+![Praktikum 6](../Screenshots/7.png)
+![Praktikum 6](../Screenshots/8.png)
 ---
 
 ## 6. Tugas Utama: Industry Challenge (Campus Notify App)
@@ -113,16 +113,16 @@ Tugas akhir ini adalah penyempurnaan dari seluruh modul, menggabungkan Dio, Flut
 
 **Screenshot Hasil:**
 * Tampilan Halaman Login (Guard Route Active):
-  ![Praktikum 6](Screenshots/11.png)
+  ![Praktikum 6](../Screenshots/11.png)
 * Tampilan Halaman Utama Pengumuman:
-  ![Praktikum 6](Screenshots/12.png)
+  ![Praktikum 6](../Screenshots/12.png)
 * Tampilan Detail Pengumuman via Deep-Link Notifikasi:
-  ![Praktikum 6](Screenshots/13.png)
+  ![Praktikum 6](../Screenshots/13.png)
 * Tampilan Banner Notifikasi Foreground & Background:
-  ![Praktikum 6](Screenshots/14.png)
-  ![Praktikum 6](Screenshots/15.png)
+  ![Praktikum 6](../Screenshots/14.png)
+  ![Praktikum 6](../Screenshots/15.png)
 * Hasil Running Unit Test & Flutter Analyze (All Tests Passed):
-  ![Praktikum 6](Screenshots/10.png)
+  ![Praktikum 6](../Screenshots/10.png)
 
 ---
 

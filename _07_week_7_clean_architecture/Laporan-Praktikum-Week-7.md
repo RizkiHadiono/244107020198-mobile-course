@@ -216,6 +216,10 @@ flutter test
 # Hasil: All 12 tests passed!
 ```
 
+Bukti eksekusi `flutter analyze` (No issues found!) dan `flutter test` pada terminal:
+
+![Praktikum 7](screenshots/5.png)
+
 ---
 
 ## 5. AI Challenge: Evaluasi Struktur & Trade-Off Arsitektur
@@ -266,49 +270,41 @@ Hasil eksekusi:
 
 ---
 
-## 7. Refleksi Pertanyaan Codelab
+## 7. Dokumentasi Tangkapan Layar (Screenshots)
 
-### 1. Mengapa interface repository harus tinggal di domain, bukan di data? Apa yang rusak bila dibalik?
-Jika interface repository diletakkan di layer Data, maka Domain harus mengimpor layer Data agar bisa menggunakan interface tersebut. Hal ini secara langsung **merusak aturan dependensi (*Dependency Rule*)**, karena layer bisnis inti akan bergantung pada modul luar. Akibatnya, kita tidak bisa menguji atau mengganti teknologi penyimpanan (misal migrasi SQLite ke cloud API) tanpa mengubah atau membongkar layer domain. Dengan meletakkan interface di Domain, Domain tetap independen dan memegang kendali penuh atas kontrak bisnisnya (*Dependency Inversion Principle*).
+Berikut dokumentasi aplikasi yang telah direfactor dengan Clean Architecture. Karena refactoring dilakukan murni pada struktur kode (tanpa mengubah perilaku), tampilan antarmuka aplikasi berjalan **identik** dengan akhir Minggu 5–6 tanpa regresi.
 
-### 2. Kapan use case benar-benar dibutuhkan, dan kapan repository langsung ke notifier sudah cukup?
-Use Case benar-benar dibutuhkan ketika:
-* Terdapat **aturan bisnis atau validasi** yang harus dieksekusi sebelum data dikirim/disimpan (misal validasi kredensial email/password atau sanitasi input).
-* Terdapat **orkestrasi beberapa repository** sekaligus (misal mengambil catatan lalu menyinkronkannya dengan status user auth).
-* Terdapat **transformasi data atau kalkulasi bisnis** khusus.
-
-Sebaliknya, untuk operasi CRUD sederhana satu baris tanpa aturan bisnis (seperti `deleteNote(id)` atau pembacaan query langsung), pemanggilan dari Notifier langsung ke interface repository sudah sangat cukup dan menghindari *boilerplate code* yang tidak perlu.
-
-### 3. Apa biaya over-engineering (use case per CRUD satu-baris) bagi tim kecil? Kapan biayanya sepadan?
-Bagi tim pengembang kecil, membuat use case untuk setiap operasi 1-baris menimbulkan biaya berupa:
-* Ledakan jumlah file (*file/class explosion*).
-* Waktu navigasi dan *mental overhead* yang tinggi saat menelusuri alur kode (*tracing* berbelit-belit hanya untuk membaca baris delegasi kosong).
-* Beban pemeliharaan (*maintenance burden*) yang tidak sebanding dengan kompleksitas fitur.
-
-Biaya tersebut baru sepadan (*worth it*) pada aplikasi skala besar (enterprise) dengan puluhan pengembang, di mana setiap use case memiliki aturan bisnis kompleks, caching bertingkat, analytics logging, dan aturan perizinan akses (*role-based authorization*) yang ketat.
-
-### 4. Bagian mana dari usulan AI yang Anda tolak atau sederhanakan, dan mengapa?
-1. **Penolakan Pembuatan File Use Case untuk Setiap Operasi:**  
-   AI mengusulkan pembuatan file terpisah untuk `DeleteNote`, `UpdateNote`, dan `CountDirty`. Usulan ini disederhanakan: operasi tersebut langsung dipanggil dari Notifier ke `NoteRepository` interface, sedangkan Use Case difokuskan pada operasi berlogika bisnis seperti `AddNote` dan `LoginUser`.
-2. **Penyempurnaan Pewarisan Model:**  
-   AI awalnya mengusulkan `NoteModel` independen yang menduplikasi seluruh field dari `Note`. Penulis mengubahnya menjadi `NoteModel extends Note` dengan pemanfaatan `super parameters`, sehingga mematuhi prinsip DRY (*Don't Repeat Yourself*) dan memaksimalkan keunggulan OOP Dart.
-3. **Penyederhanaan Failure Handling:**  
-   AI menyarankan penggunaan library pihak ketiga seperti `dartz` (`Either<Failure, T>`). Penulis menolaknya dan memilih **Dart 3 Records** bawaan (`({T? data, Failure? failure})`) yang jauh lebih ringan, modern, dan tidak menambah dependensi eksternal.
+**Screenshot Hasil:**
+* Tampilan Halaman Utama Catatan (Mode Offline Aktif & Badge Antrean Sync):
+  ![Praktikum 7](screenshots/7.png)
+  ![Praktikum 7](screenshots/8.png)
+* Tampilan Dialog Buat Catatan Baru (Create):
+  ![Praktikum 7](screenshots/6.png)
+* Tampilan Halaman Detail / Edit Catatan (Update):
+  ![Praktikum 7](screenshots/10.png)
+* Tampilan Dialog Konfirmasi Hapus Catatan (Delete):
+  ![Praktikum 7](screenshots/11.png)
+* Tampilan Halaman Pengaturan (Tema & Waktu Akses):
+  ![Praktikum 7](screenshots/9.png)
+* Aplikasi Dijalankan pada Emulator dengan Riverpod `ProviderScope`:
+  ![Praktikum 7](screenshots/1.png)
+  ![Praktikum 7](screenshots/2.png)
+* Pemisahan Widget `NoteTile` dari Halaman (Hasil Refactoring UI):
+  ![Praktikum 7](screenshots/3.png)
+  ![Praktikum 7](screenshots/4.png)
 
 ---
 
-## 8. Dokumentasi Tangkapan Layar (Screenshots)
+## 8. Refleksi Pertanyaan Codelab
 
-Berikut adalah dokumentasi tampilan aplikasi yang telah berhasil direfactor dengan Clean Architecture:
+1. **Mengapa interface repository harus tinggal di domain, bukan di data? Apa yang rusak bila dibalik?**  
+   Jika interface repository diletakkan di layer Data, maka Domain harus mengimpor layer Data agar bisa menggunakan interface tersebut. Hal ini secara langsung **merusak aturan dependensi (*Dependency Rule*)**, karena layer bisnis inti akan bergantung pada modul luar. Akibatnya, kita tidak bisa menguji atau mengganti teknologi penyimpanan (misal migrasi SQLite ke cloud API) tanpa mengubah atau membongkar layer domain. Dengan meletakkan interface di Domain, Domain tetap independen dan memegang kendali penuh atas kontrak bisnisnya (*Dependency Inversion Principle*).
 
-![Daftar Catatan Bersih](screenshots/1.png)  
-*Gambar 1: Halaman Daftar Catatan dengan status sinkronisasi offline-first.*
+2. **Kapan use case benar-benar dibutuhkan, dan kapan repository langsung ke notifier sudah cukup?**  
+   Use Case benar-benar dibutuhkan ketika: (a) terdapat **aturan bisnis atau validasi** yang harus dieksekusi sebelum data dikirim/disimpan (misal validasi kredensial email/password atau sanitasi input); (b) terdapat **orkestrasi beberapa repository** sekaligus (misal mengambil catatan lalu menyinkronkannya dengan status user auth); atau (c) terdapat **transformasi data atau kalkulasi bisnis** khusus. Sebaliknya, untuk operasi CRUD sederhana satu baris tanpa aturan bisnis (seperti `deleteNote(id)` atau pembacaan query langsung), pemanggilan dari Notifier langsung ke interface repository sudah sangat cukup dan menghindari *boilerplate code* yang tidak perlu.
 
-![Detail & Edit Catatan](screenshots/2.png)  
-*Gambar 2: Form penambahan dan pengeditan catatan dengan pemisahan layer presentation yang rapi.*
+3. **Apa biaya over-engineering (use case per CRUD satu-baris) bagi tim kecil? Kapan biayanya sepadan?**  
+   Bagi tim pengembang kecil, membuat use case untuk setiap operasi 1-baris menimbulkan biaya berupa ledakan jumlah file (*file/class explosion*), waktu navigasi dan *mental overhead* yang tinggi saat menelusuri alur kode, serta beban pemeliharaan yang tidak sebanding dengan kompleksitas fitur. Biaya tersebut baru sepadan (*worth it*) pada aplikasi skala besar (enterprise) dengan puluhan pengembang, di mana setiap use case memiliki aturan bisnis kompleks, caching bertingkat, analytics logging, dan aturan perizinan akses (*role-based authorization*) yang ketat.
 
-![Eksekusi Unit Test](screenshots/3.png)  
-*Gambar 3: Verifikasi automated unit tests dengan Fake Repository.*
-
-![Static Analysis](screenshots/4.png)  
-*Gambar 4: Pengujian kebersihan kode melalui flutter analyze.*
+4. **Bagian mana dari usulan AI yang Anda tolak atau sederhanakan, dan mengapa?**  
+   Pertama, **penolakan pembuatan file Use Case untuk setiap operasi**: AI mengusulkan file terpisah untuk `DeleteNote`, `UpdateNote`, dan `CountDirty`; usulan ini disederhanakan karena operasi tersebut langsung dipanggil dari Notifier ke `NoteRepository` interface, sedangkan Use Case difokuskan pada operasi berlogika bisnis seperti `AddNote` dan `LoginUser`. Kedua, **penyempurnaan pewarisan model**: AI awalnya mengusulkan `NoteModel` independen yang menduplikasi seluruh field dari `Note`; penulis mengubahnya menjadi `NoteModel extends Note` dengan `super parameters` agar mematuhi prinsip DRY. Ketiga, **penyederhanaan failure handling**: AI menyarankan library pihak ketiga `dartz` (`Either<Failure, T>`); penulis menolaknya dan memilih **Dart 3 Records** bawaan (`({T? data, Failure? failure})`) yang lebih ringan, modern, dan bebas dependensi eksternal.
