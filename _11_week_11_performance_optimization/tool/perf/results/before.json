@@ -1,0 +1,2545 @@
+{
+  "label": "before",
+  "capturedAt": "2026-11-08T13:43:52.101Z",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "devicePixelRatio": 2
+  },
+  "heapBefore": {
+    "usedBytes": 16932064,
+    "totalBytes": 17764352
+  },
+  "heapAfter": {
+    "usedBytes": 22826036,
+    "totalBytes": 26152960
+  },
+  "heapDeltaBytes": 5893972,
+  "generatedAt": "2026-11-08T20:43:48.610",
+  "frameBudgetMs": 16.666666666666668,
+  "frameCount": 358,
+  "jankCount": 22,
+  "jankRatio": 0.061452513966480445,
+  "avgBuildMs": 8.934,
+  "avgRasterMs": 2.565,
+  "avgFrameMs": 9.659,
+  "p90FrameMs": 14.5,
+  "worstFrameMs": 289,
+  "worstBuildMs": 289,
+  "worstRasterMs": 170.899,
+  "firstFrameMs": 169,
+  "buildCounts": {
+    "NoteCard": 166,
+    "AnnouncementCard": 100
+  },
+  "imageCacheCount": 27,
+  "imageCacheBytes": 103680000,
+  "frames": [
+    {
+      "frame": 2,
+      "build": 21.4,
+      "raster": 76.599,
+      "total": 113.2,
+      "jank": true
+    },
+    {
+      "frame": 3,
+      "build": 1.8,
+      "raster": 1.299,
+      "total": 3.5,
+      "jank": false
+    },
+    {
+      "frame": 4,
+      "build": 2.201,
+      "raster": 1.601,
+      "total": 4.701,
+      "jank": false
+    },
+    {
+      "frame": 5,
+      "build": 21,
+      "raster": 4.5,
+      "total": 26.599,
+      "jank": true
+    },
+    {
+      "frame": 6,
+      "build": 15.9,
+      "raster": 3.2,
+      "total": 20.4,
+      "jank": false
+    },
+    {
+      "frame": 7,
+      "build": 13.101,
+      "raster": 3.599,
+      "total": 20.7,
+      "jank": false
+    },
+    {
+      "frame": 8,
+      "build": 8.9,
+      "raster": 2.099,
+      "total": 11.7,
+      "jank": false
+    },
+    {
+      "frame": 9,
+      "build": 6,
+      "raster": 2.599,
+      "total": 10,
+      "jank": false
+    },
+    {
+      "frame": 10,
+      "build": 7,
+      "raster": 2.3,
+      "total": 11,
+      "jank": false
+    },
+    {
+      "frame": 11,
+      "build": 6.101,
+      "raster": 1.901,
+      "total": 8.901,
+      "jank": false
+    },
+    {
+      "frame": 12,
+      "build": 5,
+      "raster": 2,
+      "total": 7.899,
+      "jank": false
+    },
+    {
+      "frame": 13,
+      "build": 3.5,
+      "raster": 1.799,
+      "total": 6.9,
+      "jank": false
+    },
+    {
+      "frame": 14,
+      "build": 3.7,
+      "raster": 1.301,
+      "total": 5.7,
+      "jank": false
+    },
+    {
+      "frame": 15,
+      "build": 3.901,
+      "raster": 1.599,
+      "total": 6.3,
+      "jank": false
+    },
+    {
+      "frame": 16,
+      "build": 3.201,
+      "raster": 1.099,
+      "total": 5.5,
+      "jank": false
+    },
+    {
+      "frame": 17,
+      "build": 17.601,
+      "raster": 2.099,
+      "total": 22.7,
+      "jank": true
+    },
+    {
+      "frame": 18,
+      "build": 9.7,
+      "raster": 18.8,
+      "total": 29.8,
+      "jank": true
+    },
+    {
+      "frame": 19,
+      "build": 8.899,
+      "raster": 2.2,
+      "total": 12.899,
+      "jank": false
+    },
+    {
+      "frame": 20,
+      "build": 7.5,
+      "raster": 1.899,
+      "total": 10.099,
+      "jank": false
+    },
+    {
+      "frame": 21,
+      "build": 2.3,
+      "raster": 1.8,
+      "total": 4.899,
+      "jank": false
+    },
+    {
+      "frame": 22,
+      "build": 2.401,
+      "raster": 1.599,
+      "total": 4.7,
+      "jank": false
+    },
+    {
+      "frame": 23,
+      "build": 2.6,
+      "raster": 1.8,
+      "total": 5.1,
+      "jank": false
+    },
+    {
+      "frame": 24,
+      "build": 3.101,
+      "raster": 1.601,
+      "total": 6.101,
+      "jank": false
+    },
+    {
+      "frame": 25,
+      "build": 1.8,
+      "raster": 1.199,
+      "total": 4.199,
+      "jank": false
+    },
+    {
+      "frame": 26,
+      "build": 1.2,
+      "raster": 2.3,
+      "total": 4,
+      "jank": false
+    },
+    {
+      "frame": 27,
+      "build": 12.801,
+      "raster": 2.5,
+      "total": 16.7,
+      "jank": false
+    },
+    {
+      "frame": 28,
+      "build": 8.399,
+      "raster": 1.8,
+      "total": 11.199,
+      "jank": false
+    },
+    {
+      "frame": 29,
+      "build": 7.5,
+      "raster": 2,
+      "total": 10.5,
+      "jank": false
+    },
+    {
+      "frame": 30,
+      "build": 2.8,
+      "raster": 1.199,
+      "total": 5.199,
+      "jank": false
+    },
+    {
+      "frame": 31,
+      "build": 2.101,
+      "raster": 1.101,
+      "total": 3.801,
+      "jank": false
+    },
+    {
+      "frame": 32,
+      "build": 5.601,
+      "raster": 1.599,
+      "total": 7.7,
+      "jank": false
+    },
+    {
+      "frame": 33,
+      "build": 2.301,
+      "raster": 1.099,
+      "total": 3.9,
+      "jank": false
+    },
+    {
+      "frame": 34,
+      "build": 2.2,
+      "raster": 1.401,
+      "total": 4.2,
+      "jank": false
+    },
+    {
+      "frame": 35,
+      "build": 2.8,
+      "raster": 1.8,
+      "total": 5.201,
+      "jank": false
+    },
+    {
+      "frame": 36,
+      "build": 2.1,
+      "raster": 1.401,
+      "total": 4.201,
+      "jank": false
+    },
+    {
+      "frame": 37,
+      "build": 1.299,
+      "raster": 1.299,
+      "total": 3.299,
+      "jank": false
+    },
+    {
+      "frame": 38,
+      "build": 7.101,
+      "raster": 1.599,
+      "total": 9.9,
+      "jank": false
+    },
+    {
+      "frame": 39,
+      "build": 8.101,
+      "raster": 1.3,
+      "total": 10.5,
+      "jank": false
+    },
+    {
+      "frame": 40,
+      "build": 2.601,
+      "raster": 1.3,
+      "total": 5,
+      "jank": false
+    },
+    {
+      "frame": 41,
+      "build": 5.5,
+      "raster": 1.101,
+      "total": 6.901,
+      "jank": false
+    },
+    {
+      "frame": 42,
+      "build": 2.7,
+      "raster": 1.401,
+      "total": 4.901,
+      "jank": false
+    },
+    {
+      "frame": 43,
+      "build": 5.4,
+      "raster": 1.3,
+      "total": 7.2,
+      "jank": false
+    },
+    {
+      "frame": 44,
+      "build": 2.601,
+      "raster": 1.7,
+      "total": 5,
+      "jank": false
+    },
+    {
+      "frame": 45,
+      "build": 1.8,
+      "raster": 1.3,
+      "total": 3.6,
+      "jank": false
+    },
+    {
+      "frame": 46,
+      "build": 1.8,
+      "raster": 1.2,
+      "total": 3.5,
+      "jank": false
+    },
+    {
+      "frame": 47,
+      "build": 1.599,
+      "raster": 1.9,
+      "total": 4.099,
+      "jank": false
+    },
+    {
+      "frame": 48,
+      "build": 0.899,
+      "raster": 1.1,
+      "total": 2.399,
+      "jank": false
+    },
+    {
+      "frame": 49,
+      "build": 7.801,
+      "raster": 1.401,
+      "total": 10.601,
+      "jank": false
+    },
+    {
+      "frame": 50,
+      "build": 9.7,
+      "raster": 1.699,
+      "total": 12.399,
+      "jank": false
+    },
+    {
+      "frame": 51,
+      "build": 6,
+      "raster": 1.399,
+      "total": 8.199,
+      "jank": false
+    },
+    {
+      "frame": 52,
+      "build": 5.8,
+      "raster": 1.2,
+      "total": 7.601,
+      "jank": false
+    },
+    {
+      "frame": 53,
+      "build": 2.5,
+      "raster": 1.099,
+      "total": 4.2,
+      "jank": false
+    },
+    {
+      "frame": 54,
+      "build": 6.099,
+      "raster": 1.5,
+      "total": 8,
+      "jank": false
+    },
+    {
+      "frame": 55,
+      "build": 2.099,
+      "raster": 1.1,
+      "total": 3.899,
+      "jank": false
+    },
+    {
+      "frame": 56,
+      "build": 1.5,
+      "raster": 1.101,
+      "total": 3,
+      "jank": false
+    },
+    {
+      "frame": 57,
+      "build": 1.901,
+      "raster": 1.599,
+      "total": 4.2,
+      "jank": false
+    },
+    {
+      "frame": 58,
+      "build": 1.5,
+      "raster": 1.399,
+      "total": 3.8,
+      "jank": false
+    },
+    {
+      "frame": 59,
+      "build": 1.101,
+      "raster": 1.3,
+      "total": 2.8,
+      "jank": false
+    },
+    {
+      "frame": 60,
+      "build": 5.399,
+      "raster": 1.3,
+      "total": 7.699,
+      "jank": false
+    },
+    {
+      "frame": 61,
+      "build": 5.4,
+      "raster": 1.199,
+      "total": 7.5,
+      "jank": false
+    },
+    {
+      "frame": 62,
+      "build": 6.2,
+      "raster": 1.1,
+      "total": 7.899,
+      "jank": false
+    },
+    {
+      "frame": 63,
+      "build": 5.8,
+      "raster": 1,
+      "total": 7.201,
+      "jank": false
+    },
+    {
+      "frame": 64,
+      "build": 2.4,
+      "raster": 1.6,
+      "total": 5,
+      "jank": false
+    },
+    {
+      "frame": 65,
+      "build": 2.099,
+      "raster": 1.1,
+      "total": 3.699,
+      "jank": false
+    },
+    {
+      "frame": 66,
+      "build": 5.899,
+      "raster": 1.2,
+      "total": 7.599,
+      "jank": false
+    },
+    {
+      "frame": 67,
+      "build": 1.601,
+      "raster": 1.101,
+      "total": 3.101,
+      "jank": false
+    },
+    {
+      "frame": 68,
+      "build": 2.201,
+      "raster": 1.7,
+      "total": 4.401,
+      "jank": false
+    },
+    {
+      "frame": 69,
+      "build": 1.399,
+      "raster": 1.399,
+      "total": 3.599,
+      "jank": false
+    },
+    {
+      "frame": 70,
+      "build": 0.901,
+      "raster": 0.9,
+      "total": 2.2,
+      "jank": false
+    },
+    {
+      "frame": 71,
+      "build": 6.3,
+      "raster": 1.3,
+      "total": 8.3,
+      "jank": false
+    },
+    {
+      "frame": 72,
+      "build": 5.4,
+      "raster": 1.3,
+      "total": 7.7,
+      "jank": false
+    },
+    {
+      "frame": 73,
+      "build": 4.8,
+      "raster": 1.099,
+      "total": 6.2,
+      "jank": false
+    },
+    {
+      "frame": 74,
+      "build": 5.5,
+      "raster": 1.099,
+      "total": 7.5,
+      "jank": false
+    },
+    {
+      "frame": 75,
+      "build": 1.7,
+      "raster": 1.2,
+      "total": 3.299,
+      "jank": false
+    },
+    {
+      "frame": 76,
+      "build": 2.301,
+      "raster": 1.101,
+      "total": 4.101,
+      "jank": false
+    },
+    {
+      "frame": 77,
+      "build": 1.899,
+      "raster": 1.1,
+      "total": 3.399,
+      "jank": false
+    },
+    {
+      "frame": 78,
+      "build": 5.401,
+      "raster": 1.299,
+      "total": 7.2,
+      "jank": false
+    },
+    {
+      "frame": 79,
+      "build": 1.9,
+      "raster": 1,
+      "total": 3.2,
+      "jank": false
+    },
+    {
+      "frame": 80,
+      "build": 1.399,
+      "raster": 1,
+      "total": 3,
+      "jank": false
+    },
+    {
+      "frame": 81,
+      "build": 1.401,
+      "raster": 1.601,
+      "total": 3.8,
+      "jank": false
+    },
+    {
+      "frame": 82,
+      "build": 6.401,
+      "raster": 1.399,
+      "total": 8.6,
+      "jank": false
+    },
+    {
+      "frame": 83,
+      "build": 4.901,
+      "raster": 1.7,
+      "total": 7.5,
+      "jank": false
+    },
+    {
+      "frame": 84,
+      "build": 5.901,
+      "raster": 1.399,
+      "total": 7.8,
+      "jank": false
+    },
+    {
+      "frame": 85,
+      "build": 5.201,
+      "raster": 1.3,
+      "total": 7.3,
+      "jank": false
+    },
+    {
+      "frame": 86,
+      "build": 1.5,
+      "raster": 1.099,
+      "total": 3.2,
+      "jank": false
+    },
+    {
+      "frame": 87,
+      "build": 1.9,
+      "raster": 1.099,
+      "total": 3.9,
+      "jank": false
+    },
+    {
+      "frame": 88,
+      "build": 1.9,
+      "raster": 1,
+      "total": 3.4,
+      "jank": false
+    },
+    {
+      "frame": 89,
+      "build": 2,
+      "raster": 1.101,
+      "total": 3.601,
+      "jank": false
+    },
+    {
+      "frame": 90,
+      "build": 1.401,
+      "raster": 1.099,
+      "total": 3,
+      "jank": false
+    },
+    {
+      "frame": 91,
+      "build": 1.801,
+      "raster": 1.201,
+      "total": 3.601,
+      "jank": false
+    },
+    {
+      "frame": 92,
+      "build": 1.2,
+      "raster": 1.3,
+      "total": 3,
+      "jank": false
+    },
+    {
+      "frame": 93,
+      "build": 7.8,
+      "raster": 1.399,
+      "total": 9.8,
+      "jank": false
+    },
+    {
+      "frame": 94,
+      "build": 5.099,
+      "raster": 1,
+      "total": 6.799,
+      "jank": false
+    },
+    {
+      "frame": 95,
+      "build": 5.7,
+      "raster": 1,
+      "total": 7.399,
+      "jank": false
+    },
+    {
+      "frame": 96,
+      "build": 2.3,
+      "raster": 1.201,
+      "total": 4.3,
+      "jank": false
+    },
+    {
+      "frame": 97,
+      "build": 4.5,
+      "raster": 1.3,
+      "total": 6.201,
+      "jank": false
+    },
+    {
+      "frame": 98,
+      "build": 1.899,
+      "raster": 1.7,
+      "total": 4.099,
+      "jank": false
+    },
+    {
+      "frame": 99,
+      "build": 1.799,
+      "raster": 1.601,
+      "total": 4,
+      "jank": false
+    },
+    {
+      "frame": 100,
+      "build": 1.5,
+      "raster": 1.399,
+      "total": 3.599,
+      "jank": false
+    },
+    {
+      "frame": 101,
+      "build": 2.599,
+      "raster": 1.199,
+      "total": 4.199,
+      "jank": false
+    },
+    {
+      "frame": 102,
+      "build": 1.7,
+      "raster": 1.399,
+      "total": 4,
+      "jank": false
+    },
+    {
+      "frame": 103,
+      "build": 1.101,
+      "raster": 1.099,
+      "total": 2.5,
+      "jank": false
+    },
+    {
+      "frame": 104,
+      "build": 8.601,
+      "raster": 1.2,
+      "total": 10.7,
+      "jank": false
+    },
+    {
+      "frame": 105,
+      "build": 4.4,
+      "raster": 1,
+      "total": 6,
+      "jank": false
+    },
+    {
+      "frame": 106,
+      "build": 5.299,
+      "raster": 1,
+      "total": 7,
+      "jank": false
+    },
+    {
+      "frame": 107,
+      "build": 2.201,
+      "raster": 1.201,
+      "total": 4.201,
+      "jank": false
+    },
+    {
+      "frame": 108,
+      "build": 5.101,
+      "raster": 1.5,
+      "total": 7.301,
+      "jank": false
+    },
+    {
+      "frame": 109,
+      "build": 1.7,
+      "raster": 1.3,
+      "total": 3.401,
+      "jank": false
+    },
+    {
+      "frame": 110,
+      "build": 1.901,
+      "raster": 1.199,
+      "total": 3.6,
+      "jank": false
+    },
+    {
+      "frame": 111,
+      "build": 1.899,
+      "raster": 1.1,
+      "total": 3.399,
+      "jank": false
+    },
+    {
+      "frame": 112,
+      "build": 1.899,
+      "raster": 1.5,
+      "total": 3.899,
+      "jank": false
+    },
+    {
+      "frame": 113,
+      "build": 2,
+      "raster": 1.3,
+      "total": 4.201,
+      "jank": false
+    },
+    {
+      "frame": 114,
+      "build": 0.899,
+      "raster": 1,
+      "total": 2.299,
+      "jank": false
+    },
+    {
+      "frame": 115,
+      "build": 29,
+      "raster": 1.5,
+      "total": 32.901,
+      "jank": true
+    },
+    {
+      "frame": 116,
+      "build": 40.3,
+      "raster": 1.099,
+      "total": 44.8,
+      "jank": true
+    },
+    {
+      "frame": 117,
+      "build": 31.6,
+      "raster": 1,
+      "total": 34.8,
+      "jank": true
+    },
+    {
+      "frame": 118,
+      "build": 17.7,
+      "raster": 1.199,
+      "total": 20.3,
+      "jank": true
+    },
+    {
+      "frame": 119,
+      "build": 10.899,
+      "raster": 1.599,
+      "total": 13.899,
+      "jank": false
+    },
+    {
+      "frame": 120,
+      "build": 2.801,
+      "raster": 1.3,
+      "total": 5.101,
+      "jank": false
+    },
+    {
+      "frame": 121,
+      "build": 1.899,
+      "raster": 1.2,
+      "total": 3.5,
+      "jank": false
+    },
+    {
+      "frame": 122,
+      "build": 2.6,
+      "raster": 1.5,
+      "total": 5.1,
+      "jank": false
+    },
+    {
+      "frame": 123,
+      "build": 2.099,
+      "raster": 1.101,
+      "total": 3.7,
+      "jank": false
+    },
+    {
+      "frame": 124,
+      "build": 4.599,
+      "raster": 1.2,
+      "total": 6.399,
+      "jank": false
+    },
+    {
+      "frame": 125,
+      "build": 1.9,
+      "raster": 0.899,
+      "total": 3.2,
+      "jank": false
+    },
+    {
+      "frame": 126,
+      "build": 2.601,
+      "raster": 1.1,
+      "total": 4.3,
+      "jank": false
+    },
+    {
+      "frame": 127,
+      "build": 2.399,
+      "raster": 1.2,
+      "total": 4.099,
+      "jank": false
+    },
+    {
+      "frame": 128,
+      "build": 2.2,
+      "raster": 0.899,
+      "total": 3.399,
+      "jank": false
+    },
+    {
+      "frame": 129,
+      "build": 2,
+      "raster": 0.701,
+      "total": 2.901,
+      "jank": false
+    },
+    {
+      "frame": 130,
+      "build": 2.5,
+      "raster": 1.3,
+      "total": 4.3,
+      "jank": false
+    },
+    {
+      "frame": 131,
+      "build": 2.901,
+      "raster": 1.2,
+      "total": 5,
+      "jank": false
+    },
+    {
+      "frame": 132,
+      "build": 2.099,
+      "raster": 1.101,
+      "total": 3.601,
+      "jank": false
+    },
+    {
+      "frame": 133,
+      "build": 2.301,
+      "raster": 1.199,
+      "total": 4,
+      "jank": false
+    },
+    {
+      "frame": 134,
+      "build": 2.401,
+      "raster": 1.299,
+      "total": 4.2,
+      "jank": false
+    },
+    {
+      "frame": 135,
+      "build": 2.199,
+      "raster": 1,
+      "total": 3.8,
+      "jank": false
+    },
+    {
+      "frame": 136,
+      "build": 26.8,
+      "raster": 1.1,
+      "total": 28.3,
+      "jank": true
+    },
+    {
+      "frame": 137,
+      "build": 13.7,
+      "raster": 1.601,
+      "total": 16,
+      "jank": false
+    },
+    {
+      "frame": 138,
+      "build": 14.9,
+      "raster": 1.4,
+      "total": 16.9,
+      "jank": false
+    },
+    {
+      "frame": 139,
+      "build": 15.5,
+      "raster": 1.4,
+      "total": 17.299,
+      "jank": false
+    },
+    {
+      "frame": 140,
+      "build": 15.599,
+      "raster": 1.4,
+      "total": 17.799,
+      "jank": false
+    },
+    {
+      "frame": 141,
+      "build": 17.5,
+      "raster": 1.301,
+      "total": 19.5,
+      "jank": true
+    },
+    {
+      "frame": 142,
+      "build": 1.8,
+      "raster": 1.301,
+      "total": 3.901,
+      "jank": false
+    },
+    {
+      "frame": 143,
+      "build": 1.199,
+      "raster": 1.2,
+      "total": 3,
+      "jank": false
+    },
+    {
+      "frame": 144,
+      "build": 1.5,
+      "raster": 1.2,
+      "total": 3,
+      "jank": false
+    },
+    {
+      "frame": 145,
+      "build": 1.599,
+      "raster": 1.599,
+      "total": 3.899,
+      "jank": false
+    },
+    {
+      "frame": 146,
+      "build": 15.301,
+      "raster": 1.399,
+      "total": 17.2,
+      "jank": false
+    },
+    {
+      "frame": 147,
+      "build": 1.601,
+      "raster": 1.401,
+      "total": 3.601,
+      "jank": false
+    },
+    {
+      "frame": 148,
+      "build": 1.701,
+      "raster": 1,
+      "total": 3.3,
+      "jank": false
+    },
+    {
+      "frame": 149,
+      "build": 1.401,
+      "raster": 1.2,
+      "total": 3.2,
+      "jank": false
+    },
+    {
+      "frame": 150,
+      "build": 20.201,
+      "raster": 1.5,
+      "total": 22.5,
+      "jank": true
+    },
+    {
+      "frame": 151,
+      "build": 2.101,
+      "raster": 1.099,
+      "total": 3.7,
+      "jank": false
+    },
+    {
+      "frame": 152,
+      "build": 1.8,
+      "raster": 1.2,
+      "total": 3.601,
+      "jank": false
+    },
+    {
+      "frame": 153,
+      "build": 1.701,
+      "raster": 1.099,
+      "total": 3.3,
+      "jank": false
+    },
+    {
+      "frame": 154,
+      "build": 1.601,
+      "raster": 1,
+      "total": 3.2,
+      "jank": false
+    },
+    {
+      "frame": 155,
+      "build": 15.5,
+      "raster": 1.5,
+      "total": 17.601,
+      "jank": false
+    },
+    {
+      "frame": 156,
+      "build": 1.5,
+      "raster": 1.101,
+      "total": 3,
+      "jank": false
+    },
+    {
+      "frame": 157,
+      "build": 1.5,
+      "raster": 1.2,
+      "total": 3.299,
+      "jank": false
+    },
+    {
+      "frame": 158,
+      "build": 1.699,
+      "raster": 1.2,
+      "total": 3.399,
+      "jank": false
+    },
+    {
+      "frame": 159,
+      "build": 1.7,
+      "raster": 1.399,
+      "total": 3.599,
+      "jank": false
+    },
+    {
+      "frame": 160,
+      "build": 1.5,
+      "raster": 1.099,
+      "total": 3.2,
+      "jank": false
+    },
+    {
+      "frame": 161,
+      "build": 15.899,
+      "raster": 1.2,
+      "total": 17.7,
+      "jank": false
+    },
+    {
+      "frame": 162,
+      "build": 38.5,
+      "raster": 8.899,
+      "total": 51.599,
+      "jank": true
+    },
+    {
+      "frame": 163,
+      "build": 2.2,
+      "raster": 0.701,
+      "total": 3.401,
+      "jank": false
+    },
+    {
+      "frame": 164,
+      "build": 8.101,
+      "raster": 2.3,
+      "total": 15.7,
+      "jank": false
+    },
+    {
+      "frame": 165,
+      "build": 1.599,
+      "raster": 1.5,
+      "total": 3.699,
+      "jank": false
+    },
+    {
+      "frame": 166,
+      "build": 19.399,
+      "raster": 1.799,
+      "total": 23.099,
+      "jank": true
+    },
+    {
+      "frame": 167,
+      "build": 2,
+      "raster": 0.801,
+      "total": 3.101,
+      "jank": false
+    },
+    {
+      "frame": 168,
+      "build": 5.901,
+      "raster": 1.701,
+      "total": 10.901,
+      "jank": false
+    },
+    {
+      "frame": 169,
+      "build": 1.601,
+      "raster": 0.899,
+      "total": 3,
+      "jank": false
+    },
+    {
+      "frame": 170,
+      "build": 19.2,
+      "raster": 1.899,
+      "total": 22.5,
+      "jank": true
+    },
+    {
+      "frame": 171,
+      "build": 1.5,
+      "raster": 0.6,
+      "total": 2.399,
+      "jank": false
+    },
+    {
+      "frame": 172,
+      "build": 6.601,
+      "raster": 1.601,
+      "total": 11.101,
+      "jank": false
+    },
+    {
+      "frame": 173,
+      "build": 1.401,
+      "raster": 1.2,
+      "total": 3.3,
+      "jank": false
+    },
+    {
+      "frame": 174,
+      "build": 19.8,
+      "raster": 2,
+      "total": 24,
+      "jank": true
+    },
+    {
+      "frame": 175,
+      "build": 1.3,
+      "raster": 0.6,
+      "total": 2.3,
+      "jank": false
+    },
+    {
+      "frame": 176,
+      "build": 5.899,
+      "raster": 1.799,
+      "total": 10.099,
+      "jank": false
+    },
+    {
+      "frame": 177,
+      "build": 1.401,
+      "raster": 0.799,
+      "total": 2.5,
+      "jank": false
+    },
+    {
+      "frame": 178,
+      "build": 19.399,
+      "raster": 1.8,
+      "total": 22.899,
+      "jank": true
+    },
+    {
+      "frame": 179,
+      "build": 1.8,
+      "raster": 0.601,
+      "total": 2.901,
+      "jank": false
+    },
+    {
+      "frame": 180,
+      "build": 5.5,
+      "raster": 2.099,
+      "total": 10.599,
+      "jank": false
+    },
+    {
+      "frame": 181,
+      "build": 2.2,
+      "raster": 1.6,
+      "total": 4.399,
+      "jank": false
+    },
+    {
+      "frame": 182,
+      "build": 20.699,
+      "raster": 170.899,
+      "total": 193.699,
+      "jank": true
+    },
+    {
+      "frame": 183,
+      "build": 3.2,
+      "raster": 2.1,
+      "total": 5.8,
+      "jank": false
+    },
+    {
+      "frame": 184,
+      "build": 289,
+      "raster": 11.9,
+      "total": 302,
+      "jank": true
+    },
+    {
+      "frame": 185,
+      "build": 1.801,
+      "raster": 0.9,
+      "total": 3.4,
+      "jank": false
+    },
+    {
+      "frame": 186,
+      "build": 13.299,
+      "raster": 41.601,
+      "total": 56,
+      "jank": true
+    },
+    {
+      "frame": 187,
+      "build": 13.599,
+      "raster": 4.299,
+      "total": 18.599,
+      "jank": false
+    },
+    {
+      "frame": 188,
+      "build": 18.199,
+      "raster": 1.301,
+      "total": 20.5,
+      "jank": true
+    },
+    {
+      "frame": 189,
+      "build": 14.101,
+      "raster": 1.2,
+      "total": 16.2,
+      "jank": false
+    },
+    {
+      "frame": 190,
+      "build": 13,
+      "raster": 1.301,
+      "total": 15.2,
+      "jank": false
+    },
+    {
+      "frame": 191,
+      "build": 15.701,
+      "raster": 1.401,
+      "total": 17.901,
+      "jank": false
+    },
+    {
+      "frame": 192,
+      "build": 15.599,
+      "raster": 1.3,
+      "total": 18,
+      "jank": false
+    },
+    {
+      "frame": 193,
+      "build": 11.899,
+      "raster": 1.5,
+      "total": 14.299,
+      "jank": false
+    },
+    {
+      "frame": 194,
+      "build": 10.7,
+      "raster": 1.2,
+      "total": 12.599,
+      "jank": false
+    },
+    {
+      "frame": 195,
+      "build": 10.101,
+      "raster": 1.399,
+      "total": 12.3,
+      "jank": false
+    },
+    {
+      "frame": 196,
+      "build": 12,
+      "raster": 1.3,
+      "total": 14.3,
+      "jank": false
+    },
+    {
+      "frame": 197,
+      "build": 11.8,
+      "raster": 1.3,
+      "total": 13.899,
+      "jank": false
+    },
+    {
+      "frame": 198,
+      "build": 12,
+      "raster": 1.3,
+      "total": 14.199,
+      "jank": false
+    },
+    {
+      "frame": 199,
+      "build": 8.9,
+      "raster": 1.299,
+      "total": 10.9,
+      "jank": false
+    },
+    {
+      "frame": 200,
+      "build": 9.401,
+      "raster": 1,
+      "total": 11.2,
+      "jank": false
+    },
+    {
+      "frame": 201,
+      "build": 10.399,
+      "raster": 1.3,
+      "total": 12.599,
+      "jank": false
+    },
+    {
+      "frame": 202,
+      "build": 11.2,
+      "raster": 0.899,
+      "total": 12.899,
+      "jank": false
+    },
+    {
+      "frame": 203,
+      "build": 10.2,
+      "raster": 1.101,
+      "total": 12.101,
+      "jank": false
+    },
+    {
+      "frame": 204,
+      "build": 11.599,
+      "raster": 1.201,
+      "total": 13.8,
+      "jank": false
+    },
+    {
+      "frame": 205,
+      "build": 10.899,
+      "raster": 1,
+      "total": 12.5,
+      "jank": false
+    },
+    {
+      "frame": 206,
+      "build": 11.599,
+      "raster": 1.199,
+      "total": 13.899,
+      "jank": false
+    },
+    {
+      "frame": 207,
+      "build": 11.7,
+      "raster": 1.2,
+      "total": 13.801,
+      "jank": false
+    },
+    {
+      "frame": 208,
+      "build": 11.7,
+      "raster": 1.2,
+      "total": 13.7,
+      "jank": false
+    },
+    {
+      "frame": 209,
+      "build": 11.7,
+      "raster": 1.201,
+      "total": 13.901,
+      "jank": false
+    },
+    {
+      "frame": 210,
+      "build": 11.8,
+      "raster": 1.2,
+      "total": 13.901,
+      "jank": false
+    },
+    {
+      "frame": 211,
+      "build": 11.7,
+      "raster": 1.201,
+      "total": 13.901,
+      "jank": false
+    },
+    {
+      "frame": 212,
+      "build": 11.399,
+      "raster": 1.2,
+      "total": 13.5,
+      "jank": false
+    },
+    {
+      "frame": 213,
+      "build": 11.901,
+      "raster": 1.201,
+      "total": 13.901,
+      "jank": false
+    },
+    {
+      "frame": 214,
+      "build": 12,
+      "raster": 1.3,
+      "total": 14.3,
+      "jank": false
+    },
+    {
+      "frame": 215,
+      "build": 12.2,
+      "raster": 1.2,
+      "total": 14.5,
+      "jank": false
+    },
+    {
+      "frame": 216,
+      "build": 8.101,
+      "raster": 1.1,
+      "total": 10,
+      "jank": false
+    },
+    {
+      "frame": 217,
+      "build": 11.101,
+      "raster": 1.2,
+      "total": 13.2,
+      "jank": false
+    },
+    {
+      "frame": 218,
+      "build": 10.901,
+      "raster": 1.401,
+      "total": 13.101,
+      "jank": false
+    },
+    {
+      "frame": 219,
+      "build": 11.2,
+      "raster": 1.2,
+      "total": 13.299,
+      "jank": false
+    },
+    {
+      "frame": 220,
+      "build": 11.5,
+      "raster": 1.2,
+      "total": 13.601,
+      "jank": false
+    },
+    {
+      "frame": 221,
+      "build": 8.6,
+      "raster": 0.901,
+      "total": 10.201,
+      "jank": false
+    },
+    {
+      "frame": 222,
+      "build": 12.099,
+      "raster": 1.401,
+      "total": 14.5,
+      "jank": false
+    },
+    {
+      "frame": 223,
+      "build": 11.2,
+      "raster": 1.3,
+      "total": 13.401,
+      "jank": false
+    },
+    {
+      "frame": 224,
+      "build": 11.401,
+      "raster": 1.199,
+      "total": 13.6,
+      "jank": false
+    },
+    {
+      "frame": 225,
+      "build": 11.5,
+      "raster": 1.3,
+      "total": 13.699,
+      "jank": false
+    },
+    {
+      "frame": 226,
+      "build": 13.5,
+      "raster": 4.599,
+      "total": 18.7,
+      "jank": false
+    },
+    {
+      "frame": 227,
+      "build": 10.599,
+      "raster": 13,
+      "total": 24.399,
+      "jank": false
+    },
+    {
+      "frame": 228,
+      "build": 15.599,
+      "raster": 18.3,
+      "total": 34.899,
+      "jank": true
+    },
+    {
+      "frame": 229,
+      "build": 12.5,
+      "raster": 2.799,
+      "total": 16.2,
+      "jank": false
+    },
+    {
+      "frame": 230,
+      "build": 13.799,
+      "raster": 1.701,
+      "total": 16.5,
+      "jank": false
+    },
+    {
+      "frame": 231,
+      "build": 14.4,
+      "raster": 3.901,
+      "total": 19.301,
+      "jank": false
+    },
+    {
+      "frame": 232,
+      "build": 13.8,
+      "raster": 1.899,
+      "total": 16.3,
+      "jank": false
+    },
+    {
+      "frame": 233,
+      "build": 10.5,
+      "raster": 1.299,
+      "total": 12.5,
+      "jank": false
+    },
+    {
+      "frame": 234,
+      "build": 10.5,
+      "raster": 1.401,
+      "total": 12.7,
+      "jank": false
+    },
+    {
+      "frame": 235,
+      "build": 13.099,
+      "raster": 1.399,
+      "total": 15.199,
+      "jank": false
+    },
+    {
+      "frame": 236,
+      "build": 2.101,
+      "raster": 1.5,
+      "total": 4,
+      "jank": false
+    },
+    {
+      "frame": 237,
+      "build": 1.099,
+      "raster": 1,
+      "total": 2.399,
+      "jank": false
+    },
+    {
+      "frame": 238,
+      "build": 9.3,
+      "raster": 1.2,
+      "total": 11.5,
+      "jank": false
+    },
+    {
+      "frame": 239,
+      "build": 1.3,
+      "raster": 1.301,
+      "total": 3,
+      "jank": false
+    },
+    {
+      "frame": 240,
+      "build": 9.5,
+      "raster": 1.7,
+      "total": 11.801,
+      "jank": false
+    },
+    {
+      "frame": 241,
+      "build": 8.401,
+      "raster": 2.601,
+      "total": 11.601,
+      "jank": false
+    },
+    {
+      "frame": 242,
+      "build": 9.399,
+      "raster": 2.099,
+      "total": 12.099,
+      "jank": false
+    },
+    {
+      "frame": 243,
+      "build": 8.801,
+      "raster": 16.101,
+      "total": 25.601,
+      "jank": false
+    },
+    {
+      "frame": 244,
+      "build": 13.699,
+      "raster": 1.7,
+      "total": 16.399,
+      "jank": false
+    },
+    {
+      "frame": 245,
+      "build": 13.8,
+      "raster": 1.5,
+      "total": 16.3,
+      "jank": false
+    },
+    {
+      "frame": 246,
+      "build": 13.201,
+      "raster": 2.099,
+      "total": 16.3,
+      "jank": false
+    },
+    {
+      "frame": 247,
+      "build": 11.3,
+      "raster": 1.401,
+      "total": 13.701,
+      "jank": false
+    },
+    {
+      "frame": 248,
+      "build": 11.3,
+      "raster": 1.301,
+      "total": 13.5,
+      "jank": false
+    },
+    {
+      "frame": 249,
+      "build": 12.7,
+      "raster": 1.601,
+      "total": 15.601,
+      "jank": false
+    },
+    {
+      "frame": 250,
+      "build": 13.2,
+      "raster": 1.799,
+      "total": 16.2,
+      "jank": false
+    },
+    {
+      "frame": 251,
+      "build": 8.3,
+      "raster": 1,
+      "total": 9.901,
+      "jank": false
+    },
+    {
+      "frame": 252,
+      "build": 1.1,
+      "raster": 1.4,
+      "total": 3,
+      "jank": false
+    },
+    {
+      "frame": 253,
+      "build": 9.301,
+      "raster": 2.901,
+      "total": 12.801,
+      "jank": false
+    },
+    {
+      "frame": 254,
+      "build": 8.401,
+      "raster": 3.101,
+      "total": 12.101,
+      "jank": false
+    },
+    {
+      "frame": 255,
+      "build": 8.401,
+      "raster": 1.5,
+      "total": 10.6,
+      "jank": false
+    },
+    {
+      "frame": 256,
+      "build": 9.2,
+      "raster": 3,
+      "total": 12.799,
+      "jank": false
+    },
+    {
+      "frame": 257,
+      "build": 11.5,
+      "raster": 1.5,
+      "total": 14,
+      "jank": false
+    },
+    {
+      "frame": 258,
+      "build": 12.1,
+      "raster": 1.101,
+      "total": 13.901,
+      "jank": false
+    },
+    {
+      "frame": 259,
+      "build": 11.5,
+      "raster": 1.3,
+      "total": 13.7,
+      "jank": false
+    },
+    {
+      "frame": 260,
+      "build": 12.401,
+      "raster": 1.4,
+      "total": 14.7,
+      "jank": false
+    },
+    {
+      "frame": 261,
+      "build": 9.8,
+      "raster": 1.401,
+      "total": 11.901,
+      "jank": false
+    },
+    {
+      "frame": 262,
+      "build": 11.5,
+      "raster": 1.5,
+      "total": 13.899,
+      "jank": false
+    },
+    {
+      "frame": 263,
+      "build": 11.399,
+      "raster": 1.301,
+      "total": 14,
+      "jank": false
+    },
+    {
+      "frame": 264,
+      "build": 10.7,
+      "raster": 1.099,
+      "total": 12.9,
+      "jank": false
+    },
+    {
+      "frame": 265,
+      "build": 1,
+      "raster": 1,
+      "total": 2.3,
+      "jank": false
+    },
+    {
+      "frame": 266,
+      "build": 8.1,
+      "raster": 2.7,
+      "total": 11.3,
+      "jank": false
+    },
+    {
+      "frame": 267,
+      "build": 10.2,
+      "raster": 5.5,
+      "total": 16.5,
+      "jank": false
+    },
+    {
+      "frame": 268,
+      "build": 11.601,
+      "raster": 1.6,
+      "total": 14.3,
+      "jank": false
+    },
+    {
+      "frame": 269,
+      "build": 13.1,
+      "raster": 2.2,
+      "total": 16.5,
+      "jank": false
+    },
+    {
+      "frame": 270,
+      "build": 10.7,
+      "raster": 2.799,
+      "total": 14.299,
+      "jank": false
+    },
+    {
+      "frame": 271,
+      "build": 13.8,
+      "raster": 1.901,
+      "total": 16.901,
+      "jank": false
+    },
+    {
+      "frame": 272,
+      "build": 13.6,
+      "raster": 1.5,
+      "total": 15.8,
+      "jank": false
+    },
+    {
+      "frame": 273,
+      "build": 10.3,
+      "raster": 1.401,
+      "total": 12.5,
+      "jank": false
+    },
+    {
+      "frame": 274,
+      "build": 10,
+      "raster": 1.3,
+      "total": 12.1,
+      "jank": false
+    },
+    {
+      "frame": 275,
+      "build": 11.601,
+      "raster": 1.3,
+      "total": 14,
+      "jank": false
+    },
+    {
+      "frame": 276,
+      "build": 9.601,
+      "raster": 1.599,
+      "total": 12,
+      "jank": false
+    },
+    {
+      "frame": 277,
+      "build": 10.8,
+      "raster": 1.2,
+      "total": 13.101,
+      "jank": false
+    },
+    {
+      "frame": 278,
+      "build": 0.7,
+      "raster": 0.901,
+      "total": 1.801,
+      "jank": false
+    },
+    {
+      "frame": 279,
+      "build": 9.601,
+      "raster": 3.8,
+      "total": 14.3,
+      "jank": false
+    },
+    {
+      "frame": 280,
+      "build": 14.1,
+      "raster": 2.699,
+      "total": 18.1,
+      "jank": false
+    },
+    {
+      "frame": 281,
+      "build": 13.2,
+      "raster": 4.1,
+      "total": 18.3,
+      "jank": false
+    },
+    {
+      "frame": 282,
+      "build": 10.2,
+      "raster": 1.7,
+      "total": 13,
+      "jank": false
+    },
+    {
+      "frame": 283,
+      "build": 14.3,
+      "raster": 1.799,
+      "total": 17.099,
+      "jank": false
+    },
+    {
+      "frame": 284,
+      "build": 13.301,
+      "raster": 3.899,
+      "total": 18.2,
+      "jank": false
+    },
+    {
+      "frame": 285,
+      "build": 10.699,
+      "raster": 2,
+      "total": 13.5,
+      "jank": false
+    },
+    {
+      "frame": 286,
+      "build": 14.8,
+      "raster": 1.699,
+      "total": 17.699,
+      "jank": false
+    },
+    {
+      "frame": 287,
+      "build": 15.801,
+      "raster": 1,
+      "total": 17.601,
+      "jank": false
+    },
+    {
+      "frame": 288,
+      "build": 13.901,
+      "raster": 1.601,
+      "total": 16.601,
+      "jank": false
+    },
+    {
+      "frame": 289,
+      "build": 9.401,
+      "raster": 1.3,
+      "total": 12,
+      "jank": false
+    },
+    {
+      "frame": 290,
+      "build": 9,
+      "raster": 1.2,
+      "total": 11.099,
+      "jank": false
+    },
+    {
+      "frame": 291,
+      "build": 1.099,
+      "raster": 1.5,
+      "total": 3.099,
+      "jank": false
+    },
+    {
+      "frame": 292,
+      "build": 11.5,
+      "raster": 3.8,
+      "total": 16.199,
+      "jank": false
+    },
+    {
+      "frame": 293,
+      "build": 9.6,
+      "raster": 1.7,
+      "total": 12.5,
+      "jank": false
+    },
+    {
+      "frame": 294,
+      "build": 13.199,
+      "raster": 4.8,
+      "total": 18.8,
+      "jank": false
+    },
+    {
+      "frame": 295,
+      "build": 13.5,
+      "raster": 1.9,
+      "total": 16.5,
+      "jank": false
+    },
+    {
+      "frame": 296,
+      "build": 14.5,
+      "raster": 1.601,
+      "total": 17.301,
+      "jank": false
+    },
+    {
+      "frame": 297,
+      "build": 12.7,
+      "raster": 2.099,
+      "total": 16.099,
+      "jank": false
+    },
+    {
+      "frame": 298,
+      "build": 15.699,
+      "raster": 1.7,
+      "total": 18.5,
+      "jank": false
+    },
+    {
+      "frame": 299,
+      "build": 15.2,
+      "raster": 3.899,
+      "total": 19.899,
+      "jank": false
+    },
+    {
+      "frame": 300,
+      "build": 10.301,
+      "raster": 1.4,
+      "total": 12.4,
+      "jank": false
+    },
+    {
+      "frame": 301,
+      "build": 13.099,
+      "raster": 1.5,
+      "total": 15.599,
+      "jank": false
+    },
+    {
+      "frame": 302,
+      "build": 12.301,
+      "raster": 1.099,
+      "total": 14.2,
+      "jank": false
+    },
+    {
+      "frame": 303,
+      "build": 9.099,
+      "raster": 1.3,
+      "total": 11.099,
+      "jank": false
+    },
+    {
+      "frame": 304,
+      "build": 1,
+      "raster": 1.099,
+      "total": 2.5,
+      "jank": false
+    },
+    {
+      "frame": 305,
+      "build": 7.901,
+      "raster": 1.4,
+      "total": 10,
+      "jank": false
+    },
+    {
+      "frame": 306,
+      "build": 11.401,
+      "raster": 3.301,
+      "total": 15.7,
+      "jank": false
+    },
+    {
+      "frame": 307,
+      "build": 10,
+      "raster": 1.5,
+      "total": 12.401,
+      "jank": false
+    },
+    {
+      "frame": 308,
+      "build": 9.2,
+      "raster": 2.899,
+      "total": 12.899,
+      "jank": false
+    },
+    {
+      "frame": 309,
+      "build": 11.5,
+      "raster": 1.601,
+      "total": 14.101,
+      "jank": false
+    },
+    {
+      "frame": 310,
+      "build": 12.6,
+      "raster": 1.401,
+      "total": 15.201,
+      "jank": false
+    },
+    {
+      "frame": 311,
+      "build": 11.899,
+      "raster": 1.301,
+      "total": 14.2,
+      "jank": false
+    },
+    {
+      "frame": 312,
+      "build": 9.5,
+      "raster": 1.3,
+      "total": 11.5,
+      "jank": false
+    },
+    {
+      "frame": 313,
+      "build": 9.3,
+      "raster": 1,
+      "total": 11.1,
+      "jank": false
+    },
+    {
+      "frame": 314,
+      "build": 8,
+      "raster": 1.601,
+      "total": 10.5,
+      "jank": false
+    },
+    {
+      "frame": 315,
+      "build": 10.899,
+      "raster": 1.099,
+      "total": 13.099,
+      "jank": false
+    },
+    {
+      "frame": 316,
+      "build": 9.7,
+      "raster": 1.1,
+      "total": 11.5,
+      "jank": false
+    },
+    {
+      "frame": 317,
+      "build": 0.7,
+      "raster": 1.7,
+      "total": 2.7,
+      "jank": false
+    },
+    {
+      "frame": 318,
+      "build": 10.5,
+      "raster": 4.1,
+      "total": 15.6,
+      "jank": false
+    },
+    {
+      "frame": 319,
+      "build": 8.5,
+      "raster": 4,
+      "total": 13.299,
+      "jank": false
+    },
+    {
+      "frame": 320,
+      "build": 11.1,
+      "raster": 1.199,
+      "total": 13.1,
+      "jank": false
+    },
+    {
+      "frame": 321,
+      "build": 9.8,
+      "raster": 2.601,
+      "total": 13.101,
+      "jank": false
+    },
+    {
+      "frame": 322,
+      "build": 11,
+      "raster": 1.3,
+      "total": 13.099,
+      "jank": false
+    },
+    {
+      "frame": 323,
+      "build": 9.5,
+      "raster": 0.9,
+      "total": 11,
+      "jank": false
+    },
+    {
+      "frame": 324,
+      "build": 9.5,
+      "raster": 1.299,
+      "total": 11.4,
+      "jank": false
+    },
+    {
+      "frame": 325,
+      "build": 9.101,
+      "raster": 1.601,
+      "total": 11.801,
+      "jank": false
+    },
+    {
+      "frame": 326,
+      "build": 8.101,
+      "raster": 1.201,
+      "total": 9.901,
+      "jank": false
+    },
+    {
+      "frame": 327,
+      "build": 7.8,
+      "raster": 1,
+      "total": 9.401,
+      "jank": false
+    },
+    {
+      "frame": 328,
+      "build": 9.899,
+      "raster": 1.101,
+      "total": 12,
+      "jank": false
+    },
+    {
+      "frame": 329,
+      "build": 8.7,
+      "raster": 0.9,
+      "total": 10.299,
+      "jank": false
+    },
+    {
+      "frame": 330,
+      "build": 0.7,
+      "raster": 0.899,
+      "total": 2,
+      "jank": false
+    },
+    {
+      "frame": 331,
+      "build": 8.599,
+      "raster": 2.6,
+      "total": 11.899,
+      "jank": false
+    },
+    {
+      "frame": 332,
+      "build": 8,
+      "raster": 3.3,
+      "total": 12,
+      "jank": false
+    },
+    {
+      "frame": 333,
+      "build": 9.7,
+      "raster": 1.201,
+      "total": 11.5,
+      "jank": false
+    },
+    {
+      "frame": 334,
+      "build": 13.599,
+      "raster": 1.399,
+      "total": 16.099,
+      "jank": false
+    },
+    {
+      "frame": 335,
+      "build": 9.2,
+      "raster": 3,
+      "total": 13.2,
+      "jank": false
+    },
+    {
+      "frame": 336,
+      "build": 11.5,
+      "raster": 1.5,
+      "total": 13.899,
+      "jank": false
+    },
+    {
+      "frame": 337,
+      "build": 10.401,
+      "raster": 1.3,
+      "total": 12.8,
+      "jank": false
+    },
+    {
+      "frame": 338,
+      "build": 8.099,
+      "raster": 1,
+      "total": 9.699,
+      "jank": false
+    },
+    {
+      "frame": 339,
+      "build": 8.2,
+      "raster": 1.201,
+      "total": 10.101,
+      "jank": false
+    },
+    {
+      "frame": 340,
+      "build": 8.1,
+      "raster": 1.101,
+      "total": 9.701,
+      "jank": false
+    },
+    {
+      "frame": 341,
+      "build": 8.7,
+      "raster": 1.101,
+      "total": 10.601,
+      "jank": false
+    },
+    {
+      "frame": 342,
+      "build": 11.2,
+      "raster": 1.199,
+      "total": 13.3,
+      "jank": false
+    },
+    {
+      "frame": 343,
+      "build": 8.099,
+      "raster": 3.901,
+      "total": 12.8,
+      "jank": false
+    },
+    {
+      "frame": 344,
+      "build": 10.199,
+      "raster": 1.6,
+      "total": 12.699,
+      "jank": false
+    },
+    {
+      "frame": 345,
+      "build": 11.899,
+      "raster": 2.801,
+      "total": 15.5,
+      "jank": false
+    },
+    {
+      "frame": 346,
+      "build": 11.101,
+      "raster": 1.5,
+      "total": 13.301,
+      "jank": false
+    },
+    {
+      "frame": 347,
+      "build": 9.2,
+      "raster": 3,
+      "total": 12.801,
+      "jank": false
+    },
+    {
+      "frame": 348,
+      "build": 14,
+      "raster": 2.101,
+      "total": 17.201,
+      "jank": false
+    },
+    {
+      "frame": 349,
+      "build": 14,
+      "raster": 1.7,
+      "total": 17,
+      "jank": false
+    },
+    {
+      "frame": 350,
+      "build": 10.8,
+      "raster": 1,
+      "total": 12.601,
+      "jank": false
+    },
+    {
+      "frame": 351,
+      "build": 11.699,
+      "raster": 1.4,
+      "total": 14.099,
+      "jank": false
+    },
+    {
+      "frame": 352,
+      "build": 10.3,
+      "raster": 1.4,
+      "total": 12.599,
+      "jank": false
+    },
+    {
+      "frame": 353,
+      "build": 12.701,
+      "raster": 1.5,
+      "total": 15.901,
+      "jank": false
+    },
+    {
+      "frame": 354,
+      "build": 11.099,
+      "raster": 1.199,
+      "total": 13.399,
+      "jank": false
+    },
+    {
+      "frame": 355,
+      "build": 10.901,
+      "raster": 1.201,
+      "total": 13.3,
+      "jank": false
+    },
+    {
+      "frame": 356,
+      "build": 9.701,
+      "raster": 1.299,
+      "total": 12,
+      "jank": false
+    },
+    {
+      "frame": 357,
+      "build": 11.2,
+      "raster": 1.2,
+      "total": 13.599,
+      "jank": false
+    },
+    {
+      "frame": 358,
+      "build": 8.3,
+      "raster": 1.1,
+      "total": 10.3,
+      "jank": false
+    },
+    {
+      "frame": 359,
+      "build": 16.899,
+      "raster": 2.2,
+      "total": 59.099,
+      "jank": true
+    }
+  ]
+}
