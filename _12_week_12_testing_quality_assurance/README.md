@@ -33,11 +33,13 @@ Folder ini adalah kelanjutan proyek catatan dari Week 11, dengan fokus baru:
 | Cakupan kode | `flutter test --coverage` | **74,1 %** baris (848/1145) |
 | Test integrasi | `flutter test integration_test/app_test.dart -d emulator-5554` | **1 test lulus** di Pixel 7 |
 
-| ![Analyze](screenshots/qa-analyze.png) | ![Integration](screenshots/qa-integration-test.png) |
+| <img src="screenshots/qa-analyze.png" width="400" alt="Keluaran flutter analyze"> | <img src="screenshots/qa-integration-test.png" width="400" alt="Keluaran integration test"> |
 | :---: | :---: |
 | **flutter analyze** bersih | **Integration test** lulus di emulator |
 
-Tabel cakupan lengkap: ![Coverage](screenshots/qa-coverage.png)
+Tabel cakupan lengkap:
+
+<img src="screenshots/qa-coverage.png" width="760" alt="Ringkasan cakupan kode per berkas">
 
 ---
 

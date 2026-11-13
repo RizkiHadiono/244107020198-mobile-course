@@ -239,53 +239,53 @@ emulator Pixel 7 melalui `flutter drive`, bukan mockup. Berkasnya tersimpan di
 
 ### 7.1 Keluaran perintah Flutter
 
-![Keluaran perintah flutter analyze](../screenshots/qa-analyze.png)
+<img src="../screenshots/qa-analyze.png" width="760" alt="Keluaran perintah flutter analyze">
 
 *Gambar 7.1 `flutter analyze` selesai tanpa satu pun temuan.*
 
-![Keluaran perintah flutter test](../screenshots/qa-flutter-test.png)
+<img src="../screenshots/qa-flutter-test.png" width="760" alt="Keluaran perintah flutter test">
 
 *Gambar 7.2 `flutter test` menjalankan 97 test dan seluruhnya lulus.*
 
-![Ringkasan cakupan kode per berkas](../screenshots/qa-coverage.png)
+<img src="../screenshots/qa-coverage.png" width="760" alt="Ringkasan cakupan kode per berkas">
 
 *Gambar 7.3 Cakupan per berkas, total 848 dari 1145 baris atau 74,1 persen.*
 
-![Keluaran integration test pada emulator](../screenshots/qa-integration-test.png)
+<img src="../screenshots/qa-integration-test.png" width="760" alt="Keluaran integration test pada emulator">
 
 *Gambar 7.4 Integration test alur utama lulus pada emulator-5554 (Pixel 7).*
 
 ### 7.2 Tampilan aplikasi pada emulator
 
-![Halaman login dengan akun demo terisi](../screenshots/01-login-page.png)
+<img src="../screenshots/01-login-page.png" width="320" alt="Halaman login dengan akun demo terisi">
 
 *Gambar 7.5 Halaman login dengan akun demo yang sudah terisi.*
 
-![Daftar catatan dalam keadaan kosong](../screenshots/02-notes-list.png)
+<img src="../screenshots/02-notes-list.png" width="320" alt="Daftar catatan dalam keadaan kosong">
 
 *Gambar 7.6 Daftar catatan masih kosong setelah login pertama.*
 
-![Validasi judul kosong pada dialog tambah catatan](../screenshots/03-validation-error.png)
+<img src="../screenshots/03-validation-error.png" width="320" alt="Validasi judul kosong pada dialog tambah catatan">
 
 *Gambar 7.7 Validasi judul kosong tampil langsung di dalam form, dialog tetap terbuka.*
 
-![Form tambah catatan yang sudah terisi](../screenshots/04-add-note-form.png)
+<img src="../screenshots/04-add-note-form.png" width="320" alt="Form tambah catatan yang sudah terisi">
 
 *Gambar 7.8 Form tambah catatan terisi judul dan isi.*
 
-![Catatan baru tampil pada daftar](../screenshots/05-note-added.png)
+<img src="../screenshots/05-note-added.png" width="320" alt="Catatan baru tampil pada daftar">
 
 *Gambar 7.9 Catatan baru tersimpan dan tampil dengan penanda Unsynced.*
 
-![Halaman detail catatan](../screenshots/06-note-detail.png)
+<img src="../screenshots/06-note-detail.png" width="320" alt="Halaman detail catatan">
 
 *Gambar 7.10 Halaman detail catatan dalam mode edit.*
 
-![Hasil pencarian yang tidak menemukan apa pun](../screenshots/07-search-empty-state.png)
+<img src="../screenshots/07-search-empty-state.png" width="320" alt="Hasil pencarian yang tidak menemukan apa pun">
 
 *Gambar 7.11 Empty state saat pencarian tidak menemukan catatan.*
 
-![Keadaan error dengan tombol Coba Lagi](../screenshots/08-error-state.png)
+<img src="../screenshots/08-error-state.png" width="320" alt="Keadaan error dengan tombol Coba Lagi">
 
 *Gambar 7.12 Keadaan error saat database gagal dibaca, lengkap dengan tombol Coba Lagi.*
 
