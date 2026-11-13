@@ -374,20 +374,61 @@ Perangkat  : emulator-5554 (Pixel 7, Android 15)
 
 ### 7.5 Bukti visual
 
-| Screenshot | Isi |
-| :--- | :--- |
-| `screenshots/qa-analyze.png` | `flutter analyze` bersih |
-| `screenshots/qa-flutter-test.png` | 97 test lulus |
-| `screenshots/qa-coverage.png` | Tabel cakupan per berkas |
-| `screenshots/qa-integration-test.png` | Integration test lulus di emulator |
-| `screenshots/01-login-page.png` | Halaman login |
-| `screenshots/02-notes-list.png` | Daftar catatan kosong |
-| `screenshots/03-validation-error.png` | Validasi judul kosong |
-| `screenshots/04-add-note-form.png` | Form terisi |
-| `screenshots/05-note-added.png` | Catatan berhasil ditambahkan |
-| `screenshots/06-note-detail.png` | Halaman detail |
-| `screenshots/07-search-empty-state.png` | Pencarian tanpa hasil |
-| `screenshots/08-error-state.png` | Keadaan error |
+Seluruh gambar di bagian ini berasal dari eksekusi nyata pada 13 November 2026.
+Gambar tampilan aplikasi diambil dari aplikasi yang benar benar berjalan di
+emulator Pixel 7 melalui `flutter drive`, bukan mockup.
+
+#### 7.5.1 Keluaran perintah Flutter
+
+![Keluaran perintah flutter analyze](screenshots/qa-analyze.png)
+
+*Gambar 7.1 `flutter analyze` selesai tanpa satu pun temuan.*
+
+![Keluaran perintah flutter test](screenshots/qa-flutter-test.png)
+
+*Gambar 7.2 `flutter test` menjalankan 97 test dan seluruhnya lulus.*
+
+![Ringkasan cakupan kode per berkas](screenshots/qa-coverage.png)
+
+*Gambar 7.3 Cakupan per berkas, total 848 dari 1145 baris atau 74,1 persen.*
+
+![Keluaran integration test pada emulator](screenshots/qa-integration-test.png)
+
+*Gambar 7.4 Integration test alur utama lulus pada emulator-5554 (Pixel 7).*
+
+#### 7.5.2 Tampilan aplikasi pada emulator
+
+![Halaman login dengan akun demo terisi](screenshots/01-login-page.png)
+
+*Gambar 7.5 Halaman login dengan akun demo yang sudah terisi.*
+
+![Daftar catatan dalam keadaan kosong](screenshots/02-notes-list.png)
+
+*Gambar 7.6 Daftar catatan masih kosong setelah login pertama.*
+
+![Validasi judul kosong pada dialog tambah catatan](screenshots/03-validation-error.png)
+
+*Gambar 7.7 Validasi judul kosong tampil langsung di dalam form, dialog tetap terbuka.*
+
+![Form tambah catatan yang sudah terisi](screenshots/04-add-note-form.png)
+
+*Gambar 7.8 Form tambah catatan terisi judul dan isi.*
+
+![Catatan baru tampil pada daftar](screenshots/05-note-added.png)
+
+*Gambar 7.9 Catatan baru tersimpan dan tampil dengan penanda Unsynced.*
+
+![Halaman detail catatan](screenshots/06-note-detail.png)
+
+*Gambar 7.10 Halaman detail catatan dalam mode edit.*
+
+![Hasil pencarian yang tidak menemukan apa pun](screenshots/07-search-empty-state.png)
+
+*Gambar 7.11 Empty state saat pencarian tidak menemukan catatan.*
+
+![Keadaan error dengan tombol Coba Lagi](screenshots/08-error-state.png)
+
+*Gambar 7.12 Keadaan error saat database gagal dibaca, lengkap dengan tombol Coba Lagi.*
 
 ---
 

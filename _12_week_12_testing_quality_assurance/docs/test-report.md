@@ -221,7 +221,8 @@ dua kali eksekusi berturut-turut.
 Saat mengambil screenshot, `flutter drive` mencetak `All tests passed.` namun
 proses keluar dengan kode 1. Penyebabnya adalah
 `convertFlutterSurfaceToImage()` yang tidak didukung penuh pada emulator ini.
-Seluruh 7 screenshot tetap tersimpan dengan benar.
+Seluruh 8 screenshot tetap tersimpan dengan benar: 7 dari
+`qa_screens_test.dart` dan 1 dari `qa_error_screen_test.dart`.
 
 Karena itu, bukti kelulusan integration test diambil dari
 `flutter test integration_test/app_test.dart -d emulator-5554` yang keluar
@@ -229,7 +230,68 @@ dengan kode 0, bukan dari `flutter drive`.
 
 ---
 
-## 7. Perbandingan sebelum dan sesudah Week 12
+## 7. Bukti visual
+
+Seluruh gambar di bawah berasal dari eksekusi nyata pada 13 November 2026.
+Gambar tampilan aplikasi diambil dari aplikasi yang benar benar berjalan di
+emulator Pixel 7 melalui `flutter drive`, bukan mockup. Berkasnya tersimpan di
+[`screenshots/`](../screenshots/).
+
+### 7.1 Keluaran perintah Flutter
+
+![Keluaran perintah flutter analyze](../screenshots/qa-analyze.png)
+
+*Gambar 7.1 `flutter analyze` selesai tanpa satu pun temuan.*
+
+![Keluaran perintah flutter test](../screenshots/qa-flutter-test.png)
+
+*Gambar 7.2 `flutter test` menjalankan 97 test dan seluruhnya lulus.*
+
+![Ringkasan cakupan kode per berkas](../screenshots/qa-coverage.png)
+
+*Gambar 7.3 Cakupan per berkas, total 848 dari 1145 baris atau 74,1 persen.*
+
+![Keluaran integration test pada emulator](../screenshots/qa-integration-test.png)
+
+*Gambar 7.4 Integration test alur utama lulus pada emulator-5554 (Pixel 7).*
+
+### 7.2 Tampilan aplikasi pada emulator
+
+![Halaman login dengan akun demo terisi](../screenshots/01-login-page.png)
+
+*Gambar 7.5 Halaman login dengan akun demo yang sudah terisi.*
+
+![Daftar catatan dalam keadaan kosong](../screenshots/02-notes-list.png)
+
+*Gambar 7.6 Daftar catatan masih kosong setelah login pertama.*
+
+![Validasi judul kosong pada dialog tambah catatan](../screenshots/03-validation-error.png)
+
+*Gambar 7.7 Validasi judul kosong tampil langsung di dalam form, dialog tetap terbuka.*
+
+![Form tambah catatan yang sudah terisi](../screenshots/04-add-note-form.png)
+
+*Gambar 7.8 Form tambah catatan terisi judul dan isi.*
+
+![Catatan baru tampil pada daftar](../screenshots/05-note-added.png)
+
+*Gambar 7.9 Catatan baru tersimpan dan tampil dengan penanda Unsynced.*
+
+![Halaman detail catatan](../screenshots/06-note-detail.png)
+
+*Gambar 7.10 Halaman detail catatan dalam mode edit.*
+
+![Hasil pencarian yang tidak menemukan apa pun](../screenshots/07-search-empty-state.png)
+
+*Gambar 7.11 Empty state saat pencarian tidak menemukan catatan.*
+
+![Keadaan error dengan tombol Coba Lagi](../screenshots/08-error-state.png)
+
+*Gambar 7.12 Keadaan error saat database gagal dibaca, lengkap dengan tombol Coba Lagi.*
+
+---
+
+## 8. Perbandingan sebelum dan sesudah Week 12
 
 | Metrik | Sebelum (Week 11) | Sesudah (Week 12) |
 | :--- | ---: | ---: |
@@ -242,7 +304,7 @@ dengan kode 0, bukan dari `flutter drive`.
 
 ---
 
-## 8. Batasan
+## 9. Batasan
 
 1. **Cakupan diukur tanpa integration test.** `flutter test --coverage` hanya
    menghitung test unit dan widget. Baris yang hanya dieksekusi di perangkat,
@@ -257,7 +319,7 @@ dengan kode 0, bukan dari `flutter drive`.
 
 ---
 
-## 9. Cara mereproduksi
+## 10. Cara mereproduksi
 
 ```bash
 cd _12_week_12_testing_quality_assurance

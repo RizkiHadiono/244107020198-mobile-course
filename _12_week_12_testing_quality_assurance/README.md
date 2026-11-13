@@ -237,8 +237,8 @@ emulator Pixel 7 melalui `flutter drive`, bukan mockup.
 - [`docs/qa-strategy.md`](docs/qa-strategy.md): pemilihan jenis test, daftar
   skenario, dan alasan bagian yang sengaja tidak diuji.
 - [`docs/test-report.md`](docs/test-report.md): hasil eksekusi, analisis
-  cakupan, bug yang ditemukan, dan batasan.
+  cakupan, bukti visual, bug yang ditemukan, dan batasan.
 - [`Laporan-Praktikum-Week-12.md`](Laporan-Praktikum-Week-12.md): laporan
-  praktikum lengkap dengan refleksi.
+  praktikum lengkap dengan refleksi dan seluruh screenshot.
 - [`tool/qa/results/`](tool/qa/results/): keluaran mentah `flutter analyze`,
   `flutter test`, dan integration test.
