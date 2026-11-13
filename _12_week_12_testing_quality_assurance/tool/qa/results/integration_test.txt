@@ -1,0 +1,15 @@
+﻿$ flutter test integration_test/app_test.dart -d emulator-5554
+
+Perangkat  : emulator-5554 (Pixel 7, Android 15)
+Plugin asli: sqflite, shared_preferences, go_router, Riverpod
+
+Running Gradle task 'assembleDebug'...
+[OK] Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk... 1,034ms
+
+00:00 +0: alur utama: login, tambah, edit, cari, dan logout
+00:09 +1: (tearDownAll)
+00:09 +1: All tests passed!
+
+Alur yang diuji: login -> tambah catatan -> buka detail -> edit judul ->
+simpan -> cari catatan -> logout.

@@ -1,0 +1,7 @@
+﻿00:00 +0: loading C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_12_week_12_testing_quality_assurance/integration_test/app_test.dart
+Running Gradle task 'assembleDebug'...                             31.2s
+ΓêÜ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...        1,132ms
+00:00 +0: alur utama: login, tambah, edit, cari, dan logout
+00:09 +1: (tearDownAll)
+00:09 +1: All tests passed!

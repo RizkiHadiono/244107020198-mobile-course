@@ -1,0 +1,16 @@
+$ flutter test --coverage
+
+test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+test/widget/login_page_widget_test.dart: menampilkan form login dengan nilai awal demo
+test/widget/notes_page_widget_test.dart: menampilkan indikator loading lalu daftar catatan
+test/widget/note_detail_page_widget_test.dart: menampilkan judul dan isi catatan yang dipilih
+test/widget/notes_page_widget_test.dart: pengguna dapat menambahkan catatan baru
+test/widget/note_detail_page_widget_test.dart: menyimpan perubahan judul lalu kembali ke daftar
+test/widget/notes_page_widget_test.dart: judul kosong ditolak tanpa memanggil repository
+test/widget/note_detail_page_widget_test.dart: kegagalan menyimpan menampilkan SnackBar dan tetap di halaman
+test/widget/notes_page_widget_test.dart: kegagalan menyimpan menampilkan SnackBar dan dialog tetap terbuka
+test/widget/notes_page_widget_test.dart: menggeser kartu ke kiri menghapus catatan
+
+00:07 +97: All tests passed!
+
+97 test lulus: 41 test lama (Week 7-11) + 56 test baru Week 12.

@@ -1,0 +1,54 @@
+COVERAGE RINGKASAN (flutter test --coverage)
+==============================================================================
+Berkas                                              Baris   Cakupan
+------------------------------------------------------------------------------
+lib/core/perf/perf_scroll_registry.dart              0/10      0.0%
+lib/core/perf/perf_recorder.dart                     3/78      3.8%
+.../ai_chat/domain/entities/chat_message.dart        1/11      9.1%
+lib/features/auth/data/models/user_model.dart        3/17     17.6%
+lib/features/auth/domain/entities/user.dart          2/10     20.0%
+lib/features/notes/domain/entities/note.dart         7/22     31.8%
+...notes/data/datasources/notes_database.dart         2/6     33.3%
+...ncements/domain/entities/announcement.dart       18/32     56.3%
+lib/perf/in_memory_note_repository.dart             21/37     56.8%
+.../data/repositories/ai_repository_impl.dart       14/22     63.6%
+...s/ai_chat/data/datasources/ai_service.dart       45/67     67.2%
+...presentation/providers/auth_providers.dart       23/34     67.6%
+lib/core/failures.dart                                5/7     71.4%
+...features/notes/data/models/note_model.dart       20/28     71.4%
+...s/presentation/pages/note_detail_page.dart       63/83     75.9%
+...s/notes/presentation/pages/notes_page.dart     249/288     86.5%
+...resentation/providers/notes_providers.dart       84/96     87.5%
+...ata/repositories/note_repository_impl.dart       53/57     93.0%
+...es/auth/presentation/pages/login_page.dart       61/65     93.8%
+...urces/announcement_remote_data_source.dart       29/30     96.7%
+lib/core/config/image_url_builder.dart                6/6    100.0%
+lib/core/format.dart                                26/26    100.0%
+lib/core/validation/note_validator.dart               5/5    100.0%
+.../ai_chat/domain/usecases/send_message.dart         6/6    100.0%
+...sitories/announcement_repository_impl.dart       43/43    100.0%
+...ata/repositories/auth_repository_impl.dart       33/33    100.0%
+...tures/auth/domain/usecases/login_user.dart         6/6    100.0%
+...ures/auth/domain/usecases/logout_user.dart         3/3    100.0%
+...atures/notes/domain/usecases/add_note.dart         5/5    100.0%
+...tures/notes/domain/usecases/get_notes.dart         3/3    100.0%
+...es/notes/domain/usecases/search_notes.dart         3/3    100.0%
+...res/notes/domain/usecases/update_note.dart         6/6    100.0%
+------------------------------------------------------------------------------
+TOTAL                                            848/1145     74.1%
+
+Cakupan baris keseluruhan : 74.1%
+Cakupan cabang (branch)   : tidak ada data cabang (0/0)
+Berkas dianalisis         : 32
+
+10 berkas dengan cakupan terendah:
+  [........................]   0.0%  lib/core/perf/perf_scroll_registry.dart
+  [#.......................]   3.8%  lib/core/perf/perf_recorder.dart
+  [##......................]   9.1%  lib/features/ai_chat/domain/entities/chat_message.dart
+  [####....................]  17.6%  lib/features/auth/data/models/user_model.dart
+  [#####...................]  20.0%  lib/features/auth/domain/entities/user.dart
+  [########................]  31.8%  lib/features/notes/domain/entities/note.dart
+  [########................]  33.3%  lib/features/notes/data/datasources/notes_database.dart
+  [##############..........]  56.3%  lib/features/announcements/domain/entities/announcement.dart
+  [##############..........]  56.8%  lib/perf/in_memory_note_repository.dart
+  [###############.........]  63.6%  lib/features/ai_chat/data/repositories/ai_repository_impl.dart

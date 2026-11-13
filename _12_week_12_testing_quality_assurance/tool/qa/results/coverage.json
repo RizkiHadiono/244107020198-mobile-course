@@ -1,0 +1,266 @@
+{
+  "generatedAt": "2026-11-13T16:13:54.920Z",
+  "overallPercent": 74.06,
+  "linesFound": 1145,
+  "linesHit": 848,
+  "branchesFound": 0,
+  "branchesHit": 0,
+  "files": [
+    {
+      "file": "lib/core/perf/perf_scroll_registry.dart",
+      "linesFound": 10,
+      "linesHit": 0,
+      "percent": 0,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/core/perf/perf_recorder.dart",
+      "linesFound": 78,
+      "linesHit": 3,
+      "percent": 3.85,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/ai_chat/domain/entities/chat_message.dart",
+      "linesFound": 11,
+      "linesHit": 1,
+      "percent": 9.09,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/auth/data/models/user_model.dart",
+      "linesFound": 17,
+      "linesHit": 3,
+      "percent": 17.65,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/auth/domain/entities/user.dart",
+      "linesFound": 10,
+      "linesHit": 2,
+      "percent": 20,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/domain/entities/note.dart",
+      "linesFound": 22,
+      "linesHit": 7,
+      "percent": 31.82,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/data/datasources/notes_database.dart",
+      "linesFound": 6,
+      "linesHit": 2,
+      "percent": 33.33,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/announcements/domain/entities/announcement.dart",
+      "linesFound": 32,
+      "linesHit": 18,
+      "percent": 56.25,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/perf/in_memory_note_repository.dart",
+      "linesFound": 37,
+      "linesHit": 21,
+      "percent": 56.76,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/ai_chat/data/repositories/ai_repository_impl.dart",
+      "linesFound": 22,
+      "linesHit": 14,
+      "percent": 63.64,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/ai_chat/data/datasources/ai_service.dart",
+      "linesFound": 67,
+      "linesHit": 45,
+      "percent": 67.16,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/auth/presentation/providers/auth_providers.dart",
+      "linesFound": 34,
+      "linesHit": 23,
+      "percent": 67.65,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/core/failures.dart",
+      "linesFound": 7,
+      "linesHit": 5,
+      "percent": 71.43,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/data/models/note_model.dart",
+      "linesFound": 28,
+      "linesHit": 20,
+      "percent": 71.43,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/presentation/pages/note_detail_page.dart",
+      "linesFound": 83,
+      "linesHit": 63,
+      "percent": 75.9,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/presentation/pages/notes_page.dart",
+      "linesFound": 288,
+      "linesHit": 249,
+      "percent": 86.46,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/presentation/providers/notes_providers.dart",
+      "linesFound": 96,
+      "linesHit": 84,
+      "percent": 87.5,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/data/repositories/note_repository_impl.dart",
+      "linesFound": 57,
+      "linesHit": 53,
+      "percent": 92.98,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/auth/presentation/pages/login_page.dart",
+      "linesFound": 65,
+      "linesHit": 61,
+      "percent": 93.85,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/announcements/data/datasources/announcement_remote_data_source.dart",
+      "linesFound": 30,
+      "linesHit": 29,
+      "percent": 96.67,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/core/config/image_url_builder.dart",
+      "linesFound": 6,
+      "linesHit": 6,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/core/format.dart",
+      "linesFound": 26,
+      "linesHit": 26,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/core/validation/note_validator.dart",
+      "linesFound": 5,
+      "linesHit": 5,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/ai_chat/domain/usecases/send_message.dart",
+      "linesFound": 6,
+      "linesHit": 6,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/announcements/data/repositories/announcement_repository_impl.dart",
+      "linesFound": 43,
+      "linesHit": 43,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/auth/data/repositories/auth_repository_impl.dart",
+      "linesFound": 33,
+      "linesHit": 33,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/auth/domain/usecases/login_user.dart",
+      "linesFound": 6,
+      "linesHit": 6,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/auth/domain/usecases/logout_user.dart",
+      "linesFound": 3,
+      "linesHit": 3,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/domain/usecases/add_note.dart",
+      "linesFound": 5,
+      "linesHit": 5,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/domain/usecases/get_notes.dart",
+      "linesFound": 3,
+      "linesHit": 3,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/domain/usecases/search_notes.dart",
+      "linesFound": 3,
+      "linesHit": 3,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    },
+    {
+      "file": "lib/features/notes/domain/usecases/update_note.dart",
+      "linesFound": 6,
+      "linesHit": 6,
+      "percent": 100,
+      "branchesFound": 0,
+      "branchesHit": 0
+    }
+  ]
+}
