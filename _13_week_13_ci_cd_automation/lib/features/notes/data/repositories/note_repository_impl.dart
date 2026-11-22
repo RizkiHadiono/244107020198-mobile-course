@@ -1,0 +1,203 @@
+import 'package:sqflite/sqflite.dart';
+
+import '../../../../core/failures.dart';
+import '../../domain/entities/note.dart';
+import '../../domain/repositories/note_repository.dart';
+import '../models/note_model.dart';
+
+class NoteRepositoryImpl implements NoteRepository {
+  NoteRepositoryImpl({required this.openDb});
+
+  final Future<Database> Function() openDb;
+
+  @override
+  Future<({List<Note> notes, Failure? failure})> fetchNotes({
+    int limit = 20,
+    int offset = 0,
+  }) async {
+    try {
+      final db = await openDb();
+      final rows = await db.query(
+        'notes',
+        orderBy: 'updated_at DESC',
+        limit: limit,
+        offset: offset,
+      );
+      final notes = rows.map((r) => NoteModel.fromMap(r).toEntity()).toList();
+      return (notes: notes, failure: null);
+    } catch (e) {
+      return (
+        notes: const <Note>[],
+        failure: LocalFailure('Gagal membaca catatan dari database lokal: $e'),
+      );
+    }
+  }
+
+  @override
+  Future<({List<Note> notes, Failure? failure})> searchNotes(
+    String query,
+  ) async {
+    final trimmed = query.trim();
+    if (trimmed.isEmpty) {
+      return (notes: const <Note>[], failure: null);
+    }
+    try {
+      final db = await openDb();
+      // Parameter binding (whereArgs) mencegah injeksi SQL. Namun `%` dan `_`
+      // tetap bermakna wildcard di dalam LIKE, sehingga karakter tersebut
+      // di-escape lebih dulu agar pengguna mencari teks apa adanya.
+      final escaped = trimmed
+          .replaceAll(r'\', r'\\')
+          .replaceAll('%', r'\%')
+          .replaceAll('_', r'\_');
+      final rows = await db.query(
+        'notes',
+        where: "title LIKE ? ESCAPE '\\'",
+        whereArgs: ['%$escaped%'],
+        orderBy: 'updated_at DESC',
+        limit: 100,
+      );
+      final notes = rows.map((r) => NoteModel.fromMap(r).toEntity()).toList();
+      return (notes: notes, failure: null);
+    } catch (e) {
+      return (
+        notes: const <Note>[],
+        failure: LocalFailure('Gagal mencari catatan: $e'),
+      );
+    }
+  }
+
+  @override
+  Future<({int total, Failure? failure})> countNotes() async {
+    try {
+      final db = await openDb();
+      final rows = await db.rawQuery('SELECT COUNT(*) AS c FROM notes');
+      final total = (rows.first['c'] as num?)?.toInt() ?? 0;
+      return (total: total, failure: null);
+    } catch (e) {
+      return (total: 0, failure: LocalFailure('Gagal menghitung catatan: $e'));
+    }
+  }
+
+  @override
+  Future<({Note? note, Failure? failure})> addNote({
+    required String title,
+    String body = '',
+  }) async {
+    try {
+      final db = await openDb();
+      final now = DateTime.now();
+      final model = NoteModel(
+        title: title,
+        body: body,
+        updatedAt: now,
+        dirty: true,
+      );
+      final id = await db.insert('notes', model.toMap());
+      return (
+        note: Note(
+          id: id,
+          title: title,
+          body: body,
+          updatedAt: now,
+          dirty: true,
+        ),
+        failure: null,
+      );
+    } catch (e) {
+      return (note: null, failure: LocalFailure('Gagal menyimpan catatan: $e'));
+    }
+  }
+
+  @override
+  Future<({bool success, Failure? failure})> updateNote(Note note) async {
+    try {
+      final db = await openDb();
+      final now = DateTime.now();
+      final model = NoteModel(
+        id: note.id,
+        title: note.title,
+        body: note.body,
+        updatedAt: now,
+        dirty: true,
+      );
+      final rowsUpdated = await db.update(
+        'notes',
+        model.toMap(),
+        where: 'id = ?',
+        whereArgs: [note.id],
+      );
+      if (rowsUpdated == 0) {
+        return (
+          success: false,
+          failure: const LocalFailure(
+            'Catatan tidak ditemukan untuk diperbarui',
+          ),
+        );
+      }
+      return (success: true, failure: null);
+    } catch (e) {
+      return (
+        success: false,
+        failure: LocalFailure('Gagal memperbarui catatan: $e'),
+      );
+    }
+  }
+
+  @override
+  Future<({bool success, Failure? failure})> deleteNote(int id) async {
+    try {
+      final db = await openDb();
+      final rowsDeleted = await db.delete(
+        'notes',
+        where: 'id = ?',
+        whereArgs: [id],
+      );
+      if (rowsDeleted == 0) {
+        return (
+          success: false,
+          failure: const LocalFailure('Catatan tidak ditemukan untuk dihapus'),
+        );
+      }
+      return (success: true, failure: null);
+    } catch (e) {
+      return (
+        success: false,
+        failure: LocalFailure('Gagal menghapus catatan: $e'),
+      );
+    }
+  }
+
+  @override
+  Future<({int count, Failure? failure})> countDirty() async {
+    try {
+      final db = await openDb();
+      final rows = await db.rawQuery(
+        'SELECT COUNT(*) AS c FROM notes WHERE dirty = 1',
+      );
+      final count = (rows.first['c'] as num?)?.toInt() ?? 0;
+      return (count: count, failure: null);
+    } catch (e) {
+      return (
+        count: 0,
+        failure: LocalFailure('Gagal menghitung catatan antrean: $e'),
+      );
+    }
+  }
+
+  @override
+  Future<({bool success, Failure? failure})> syncNotes() async {
+    try {
+      final db = await openDb();
+      // Simulasi proses pengiriman catatan dirty ke REST API/server
+      await Future<void>.delayed(const Duration(milliseconds: 600));
+      await db.update('notes', {'dirty': 0}, where: 'dirty = 1');
+      return (success: true, failure: null);
+    } catch (e) {
+      return (
+        success: false,
+        failure: NetworkFailure('Gagal sinkronisasi catatan ke cloud: $e'),
+      );
+    }
+  }
+}

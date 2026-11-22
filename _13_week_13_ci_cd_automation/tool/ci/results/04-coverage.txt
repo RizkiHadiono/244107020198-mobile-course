@@ -1,0 +1,8 @@
+RINGKASAN CAKUPAN (coverage/lcov.info)
+==============================================
+Berkas dianalisis : 32
+Baris dieksekusi  : 848/1143
+Cakupan baris     : 74.19%
+
+Angka ini hanya menghitung test unit dan widget, karena integration
+test membutuhkan emulator dan tidak dijalankan di CI.

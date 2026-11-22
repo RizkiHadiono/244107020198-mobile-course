@@ -1,0 +1,111 @@
+# Pipeline CI untuk proyek Flutter Week 13.
+#
+# Alur: commit atau pull request -> runner menyiapkan Flutter -> format,
+# analisis, dan test dijalankan -> jika lulus, APK dan AAB dibangun lalu
+# diunggah sebagai artefak yang dapat diunduh dari tab Actions.
+#
+# Catatan keamanan:
+# - Workflow ini hanya membaca kode, sehingga `contents: read` sudah cukup.
+# - Tidak ada secret yang dipakai di sini. Material signing sengaja tidak
+#   disuntikkan pada workflow yang berjalan untuk pull request.
+name: Flutter CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Izin minimum: job ini hanya perlu membaca isi repository.
+permissions:
+  contents: read
+
+# Jika ada push baru pada ref yang sama, run lama dibatalkan agar tidak
+# menumpuk dan tidak menghabiskan kuota runner.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-build:
+    name: Format, analyze, test, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    defaults:
+      run:
+        # Proyek Week 13 berada di subfolder, bukan di root repository.
+        working-directory: _13_week_13_ci_cd_automation
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Java 17 diperlukan Gradle untuk membangun Android.
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Tampilkan versi Flutter dan Dart
+        run: |
+          flutter --version
+          dart --version
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Test repository memakai `sqflite_common_ffi`, yang di Linux memuat
+      # libsqlite3 secara dinamis. Paket ini memastikan pustaka tersebut ada,
+      # sehingga unit test SQL berjalan sama seperti di mesin pengembang.
+      - name: Install SQLite library
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsqlite3-dev
+
+      # Gate 1: seluruh kode harus sudah diformat. Jika ada yang belum,
+      # job gagal dan menampilkan berkas mana yang perlu dirapikan.
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      # Gate 2: analisis statis. `--fatal-infos` membuat info ikut gagal,
+      # bukan hanya warning dan error.
+      - name: Analyze
+        run: flutter analyze --fatal-infos
+
+      # Gate 3: seluruh test unit dan widget.
+      - name: Run tests with coverage
+        run: flutter test --coverage
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: _13_week_13_ci_cd_automation/coverage/lcov.info
+          if-no-files-found: error
+          retention-days: 7
+
+      # Build hanya berjalan jika ketiga gate di atas lulus.
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Build release App Bundle
+        run: flutter build appbundle --release
+
+      - name: Upload Android builds
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-builds
+          path: |
+            _13_week_13_ci_cd_automation/build/app/outputs/flutter-apk/app-release.apk
+            _13_week_13_ci_cd_automation/build/app/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+          retention-days: 7

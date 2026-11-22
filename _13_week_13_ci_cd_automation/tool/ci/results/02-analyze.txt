@@ -1,0 +1,7 @@
+$ flutter analyze --fatal-infos
+
+Analyzing _13_week_13_ci_cd_automation...                       
+No issues found! (ran in 57.0s)
+
+exit code: 0
+durasi   : 61.1 detik

@@ -32,6 +32,7 @@ Berikut adalah daftar materi, tugas, dan praktikum yang tersimpan di dalam repos
 | **Week 10** | AI Feature Integration (Gemini LLM & Secure Storage) | ✅ Selesai |
 | **Week 11** | Performance Optimization (Profiling, Pagination, Image & Cache) | ✅ Selesai |
 | **Week 12** | Testing & Quality Assurance (Unit, Widget, Integration, Coverage) | ✅ Selesai |
+| **Week 13** | CI/CD & Otomatisasi (GitHub Actions, Artefak APK & AAB, Versioning) | ✅ Selesai |
 
 ---
 

@@ -1,0 +1,6 @@
+$ dart format --output=none --set-exit-if-changed .
+
+Formatted 68 files (0 changed) in 0.70 seconds.
+
+exit code: 0
+durasi   : 1.7 detik

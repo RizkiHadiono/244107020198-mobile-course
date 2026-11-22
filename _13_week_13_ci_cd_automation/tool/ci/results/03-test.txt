@@ -1,0 +1,104 @@
+$ flutter test --coverage
+
+00:00 +0: loading C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/ai_chat_test.dart
+00:00 +0: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/ai_chat_test.dart: AiService Tests melemparkan AiServiceException jika API Key kosong
+00:00 +1: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/ai_chat_test.dart: AiService Tests berhasil memanggil AI API saat status code 200
+00:00 +2: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRemoteDataSource mengirim parameter pagination _page dan _limit
+00:00 +3: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRemoteDataSource mengirim parameter pagination _page dan _limit
+00:00 +4: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRemoteDataSource mengirim parameter pagination _page dan _limit
+00:00 +5: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/ai_chat_test.dart: AiRepository & UseCase Tests SendMessageUseCase melempar ArgumentError jika pesan kosong
+00:00 +6: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/ai_chat_test.dart: AiRepository & UseCase Tests AiRepository mengembalikan ChatMessage bertanda isError saat terjadi exception
+00:00 +7: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRemoteDataSource memakai thumbnail/full URL dari ImageUrlBuilder
+00:00 +8: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRemoteDataSource HTTP error dilempar sebagai exception
+00:00 +9: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRemoteDataSource HTTP error dilempar sebagai exception
+00:00 +10: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRepositoryImpl (cache stale-while-revalidate) menyimpan hasil jaringan ke cache lokal
+00:00 +11: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRepositoryImpl (cache stale-while-revalidate) readCache mengembalikan data yang tersimpan di SharedPreferences
+00:00 +12: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRepositoryImpl (cache stale-while-revalidate) fallback ke cache saat jaringan gagal (offline-first)
+00:00 +13: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRepositoryImpl (cache stale-while-revalidate) tanpa cache dan tanpa jaringan mengembalikan failure
+00:00 +14: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/announcements_test.dart: AnnouncementRepositoryImpl (cache stale-while-revalidate) clearCache menghapus cache lokal
+00:01 +15: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/auth_test.dart: LoginUser UseCase Tests (Business Validation & Fake Repo) LoginUser menolak format email tanpa simbol @
+00:01 +16: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/auth_test.dart: LoginUser UseCase Tests (Business Validation & Fake Repo) LoginUser menolak kata sandi kurang dari 6 karakter
+00:01 +17: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/auth_test.dart: LoginUser UseCase Tests (Business Validation & Fake Repo) LoginUser berhasil mengembalikan User entity saat kredensial valid
+00:01 +18: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/auth_test.dart: LogoutUser UseCase Tests LogoutUser mengeksekusi proses logout pada repository
+00:01 +19: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/format_test.dart: Core Format & Parsing Pure Functions Unit Tests formatDate menghasilkan string tanggal dan jam yang tepat
+00:01 +20: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/format_test.dart: Core Format & Parsing Pure Functions Unit Tests formatDateShort menghasilkan string tanggal ringkas
+00:01 +21: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/format_test.dart: Core Format & Parsing Pure Functions Unit Tests parseIdFromPath mengekstrak ID integer dari URL route
+00:01 +22: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/format_test.dart: Core Format & Parsing Pure Functions Unit Tests sanitizeInput memotong whitespace di awal dan akhir
+00:03 +23: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/get_notes_test.dart: GetNotes UseCase Unit Tests (Clean Architecture Domain) GetNotes meneruskan daftar dari repository dengan sukses
+00:03 +24: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/get_notes_test.dart: GetNotes UseCase Unit Tests (Clean Architecture Domain) GetNotes meneruskan failure tanpa melempar exception
+00:03 +25: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/get_notes_test.dart: AddNote UseCase Unit Tests (Validation & Business Rules) AddNote menolak judul kosong dengan ValidationFailure tanpa panggil repo
+00:03 +26: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/get_notes_test.dart: AddNote UseCase Unit Tests (Validation & Business Rules) AddNote memotong whitespace dan berhasil menyimpan catatan valid
+00:03 +27: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/pagination_test.dart: Pagination daftar catatan halaman pertama hanya memuat 20 catatan, bukan seluruh tabel
+00:03 +28: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/pagination_test.dart: Pagination daftar catatan loadMore menambahkan halaman berikutnya tanpa duplikasi
+00:03 +29: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/pagination_test.dart: Pagination daftar catatan loadMore tidak berjalan lagi setelah hasMore = false
+00:03 +30: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/pagination_test.dart: Isolasi rebuild dengan select mengubah query pencarian tidak memicu ulang provider total
+00:03 +31: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/pagination_test.dart: Isolasi rebuild dengan select pencarian mencari ke seluruh database, bukan hanya halaman aktif
+00:05 +32: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/search_empty_state_test.dart: query tak cocok menampilkan empty state "Tidak ada catatan"
+00:07 +33: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/search_empty_state_test.dart: query tak cocok menampilkan empty state "Tidak ada catatan"
+00:07 +34: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/search_filter_test.dart: SearchNotes UseCase (domain, murni Dart) filter abaikan huruf besar/kecil (case-insensitive)
+00:07 +35: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/search_filter_test.dart: SearchNotes UseCase (domain, murni Dart) query cocok sebagian kata tetap mengembalikan hasil
+00:07 +36: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/search_filter_test.dart: SearchNotes UseCase (domain, murni Dart) query tak cocok mengembalikan list kosong (empty state)
+00:07 +37: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/search_empty_state_test.dart: query cocok (case-insensitive) memfilter daftar
+00:09 +38: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menyimpan sesi dan mengembalikan user saat kredensial benar
+00:10 +39: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +40: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +41: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +42: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +43: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +44: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +45: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +46: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +47: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +48: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +49: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +50: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +51: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +52: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +53: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +54: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +55: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +56: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +57: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.login menolak kata sandi salah dengan AuthFailure
+00:10 +58: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/note_repository_sqlite_test.dart: NoteRepositoryImpl di SQLite sungguhan deleteNote menghapus baris yang dipilih saja
+00:10 +59: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.getCurrentUser mengembalikan null tanpa failure saat belum ada sesi
+00:10 +60: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/note_repository_sqlite_test.dart: NoteRepositoryImpl di SQLite sungguhan deleteNote mengembalikan failure saat id tidak ada
+00:10 +61: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.getCurrentUser memulihkan sesi yang tersimpan
+00:10 +62: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/note_repository_sqlite_test.dart: NoteRepositoryImpl di SQLite sungguhan countDirty menghitung hanya catatan yang belum tersinkron
+00:10 +63: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+00:10 +64: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+00:10 +65: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+00:10 +66: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+00:10 +67: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+00:10 +68: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+00:10 +69: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+00:10 +70: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+00:10 +71: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+00:10 +72: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl.logout menghapus seluruh kunci sesi
+00:11 +73: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/note_repository_sqlite_test.dart: NoteRepositoryImpl di SQLite sungguhan syncNotes membersihkan seluruh antrean dirty
+00:11 +74: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl saat penyimpanan bermasalah login mengembalikan NetworkFailure bila prefs gagal dibuka
+00:11 +75: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/unit/auth_repository_test.dart: AuthRepositoryImpl saat penyimpanan bermasalah login mengembalikan NetworkFailure bila prefs gagal dibuka
+00:11 +76: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/update_note_test.dart: UpdateNote UseCase Unit Tests (Validation & Business Rules) UpdateNote menolak judul kosong tanpa memanggil repository
+00:11 +77: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/update_note_test.dart: UpdateNote UseCase Unit Tests (Validation & Business Rules) UpdateNote menolak judul kosong tanpa memanggil repository
+00:11 +78: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/update_note_test.dart: UpdateNote UseCase Unit Tests (Validation & Business Rules) UpdateNote menolak judul kosong tanpa memanggil repository
+00:11 +79: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/update_note_test.dart: UpdateNote UseCase Unit Tests (Validation & Business Rules) UpdateNote memotong whitespace judul dan isi sebelum disimpan
+00:11 +80: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/update_note_test.dart: UpdateNote UseCase Unit Tests (Validation & Business Rules) UpdateNote meneruskan failure repository tanpa melempar exception
+00:14 +81: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/login_page_widget_test.dart: menampilkan form login dengan nilai awal demo
+00:15 +82: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/notes_page_widget_test.dart: menampilkan indikator loading lalu daftar catatan
+00:16 +83: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/notes_page_widget_test.dart: menampilkan indikator loading lalu daftar catatan
+00:16 +84: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/login_page_widget_test.dart: kata sandi kurang dari 6 karakter ditolak
+00:16 +85: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/login_page_widget_test.dart: kata sandi kurang dari 6 karakter ditolak
+00:16 +86: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/notes_page_widget_test.dart: menampilkan pesan error dan pulih setelah Coba Lagi
+00:16 +87: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/notes_page_widget_test.dart: menampilkan pesan error dan pulih setelah Coba Lagi
+00:16 +88: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/login_page_widget_test.dart: tombol nonaktif selama proses login berlangsung
+00:16 +89: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/notes_page_widget_test.dart: pengguna dapat menambahkan catatan baru
+00:17 +90: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/notes_page_widget_test.dart: judul kosong ditolak tanpa memanggil repository
+00:17 +91: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/note_detail_page_widget_test.dart: menampilkan judul dan isi catatan yang dipilih
+00:18 +92: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/note_detail_page_widget_test.dart: menampilkan judul dan isi catatan yang dipilih
+00:18 +93: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/notes_page_widget_test.dart: menggeser kartu ke kiri menghapus catatan
+00:18 +94: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/note_detail_page_widget_test.dart: menyimpan perubahan judul lalu kembali ke daftar
+00:19 +95: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/note_detail_page_widget_test.dart: judul kosong ditolak dan tidak memanggil repository
+00:19 +96: C:/Semester_5/Pemograman_Mobile/244107020198-mobile-course/_13_week_13_ci_cd_automation/test/widget/note_detail_page_widget_test.dart: kegagalan menyimpan menampilkan SnackBar dan tetap di halaman
+00:20 +97: All tests passed!
+
+exit code: 0
+durasi   : 28.8 detik
