@@ -98,8 +98,8 @@ jobs:
           flutter test --coverage 2>&1 | tee test.log
 
       # Log mentah sebuah job hanya dapat dibuka oleh pengguna yang sudah
-      # masuk. Ringkasan ini ditulis ke halaman run, yang tetap dapat dibaca
-      # tanpa masuk, sehingga kegagalan gate tetap dapat ditelusuri.
+      # masuk. Ringkasan ini membuat penyebab kegagalan terlihat langsung pada
+      # halaman run tanpa perlu membuka log step satu per satu.
       - name: Ringkas hasil gate ke halaman run
         if: always()
         run: |

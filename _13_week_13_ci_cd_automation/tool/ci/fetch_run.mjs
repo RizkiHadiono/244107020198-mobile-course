@@ -84,6 +84,14 @@ function summarize(run, jobs, artifacts) {
         name: step.name,
         status: step.status,
         conclusion: step.conclusion,
+        startedAt: step.started_at,
+        completedAt: step.completed_at,
+        durationSeconds:
+          step.started_at && step.completed_at
+            ? Math.round(
+                (new Date(step.completed_at) - new Date(step.started_at)) / 1000,
+              )
+            : null,
       })),
     })),
     artifacts: (artifacts.artifacts ?? []).map((a) => ({
@@ -131,7 +139,11 @@ try {
     console.log(`  ${job.name}: ${job.conclusion}`);
     for (const step of job.steps) {
       const mark = step.conclusion === 'success' ? 'OK  ' : 'X   ';
-      console.log(`    ${mark}${step.number}. ${step.name}`);
+      const secs =
+        step.durationSeconds === null ? '' : ` (${step.durationSeconds} detik)`;
+      console.log(
+        `    ${mark}${step.number}. ${step.name}${secs}`,
+      );
     }
   }
   console.log('\nArtefak:');

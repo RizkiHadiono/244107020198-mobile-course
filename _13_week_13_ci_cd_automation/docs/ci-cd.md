@@ -131,7 +131,98 @@ permissions:
 
 Rincian alasannya ada di [`security-review.md`](security-review.md) bagian 7.
 
-### 2.7 Dua artefak, bukan satu
+### 2.7 Versi Flutter dipatok, bukan mengikuti `stable`
+
+```yaml
+with:
+  flutter-version: '3.47.6'
+  channel: stable
+  cache: true
+```
+
+Rancangan awal memakai `channel: stable` saja. Run pertama membuktikan itu
+bermasalah: langkah **Analyze** gagal di runner padahal perintah yang sama
+lulus di mesin pengembang.
+
+Yang dapat dipastikan dari luar hanya dua hal:
+
+| Fakta | Sumber |
+| :--- | :--- |
+| Run #1 gagal pada step 9 (`Analyze`), exit code 1 | Daftar step lewat REST API |
+| Run #2 lulus seluruhnya setelah versi dipatok ke `3.47.6` | Daftar step lewat REST API |
+
+Log step tidak dapat dibaca tanpa masuk ke GitHub, sehingga teks diagnostik
+yang dikeluarkan analyzer tidak dapat dikutip di sini. Dugaan yang paling masuk
+akal adalah pergeseran versi SDK: `stable` di runner mengikuti rilis terbaru,
+sementara mesin pengembang memakai `3.47.6`. Analyzer versi lebih baru dapat
+memunculkan diagnostik tingkat info yang belum ada di versi lama, dan gate ini
+memakai `--fatal-infos`.
+
+Dugaan itu tidak dapat dibuktikan dari sini, dan laporan ini tidak
+menuliskannya sebagai fakta. Yang diputuskan tetap sama, karena alasannya
+berlaku terlepas dari penyebab pastinya:
+
+| Pendekatan | Kelebihan | Kekurangan |
+| :--- | :--- | :--- |
+| `channel: stable` saja | Selalu menguji versi terbaru | Hasil dapat berubah tanpa ada perubahan kode. Kegagalan sulit direproduksi di mesin sendiri |
+| `flutter-version` dipatok | CI dan lokal memakai SDK yang sama, kegagalan selalu dapat direproduksi | Pembaruan SDK harus dilakukan sengaja lewat commit |
+
+Yang dipilih adalah versi dipatok. Menaikkan versi Flutter kemudian menjadi
+perubahan yang terlihat di diff, bukan kejutan pada suatu pagi. Bila gate
+kembali gagal setelah versi dinaikkan, penyebabnya pasti ada di kode, bukan di
+lingkungan.
+
+Konsekuensi yang perlu dijaga: angka versi di workflow harus ikut diperbarui
+ketika SDK di mesin pengembang naik. Bila tidak, pipeline akan terus menguji
+versi lama dan perbedaan baru tidak terdeteksi.
+
+### 2.8 Ringkasan gate ditulis ke halaman run
+
+Log mentah sebuah job hanya dapat dibuka oleh pengguna yang sudah masuk ke
+GitHub. Pada repository publik sekalipun, halaman run menampilkan
+`Sign in to view logs` bagi pengunjung tanpa akun. Ini terlihat langsung pada
+run yang sudah selesai: status dan artefak terbaca, log tidak.
+
+Karena itu setiap gate menulis keluarannya ke berkas lewat `tee`, dan satu step
+tambahan merangkumnya:
+
+```yaml
+- name: Ringkas hasil gate ke halaman run
+  if: always()
+  run: |
+    {
+      echo "## Ringkasan gate"
+      for f in format.log analyze.log test.log; do
+        echo "### \`$f\`"
+        tail -n 40 "$f"
+      done
+    } >> "$GITHUB_STEP_SUMMARY"
+```
+
+`if: always()` dipakai agar ringkasan tetap dibuat ketika salah satu gate gagal,
+yaitu justru saat ringkasan paling dibutuhkan.
+
+`set -o pipefail` dipakai pada ketiga gate. Tanpa itu, `perintah | tee berkas`
+mengembalikan kode keluar `tee`, yang hampir selalu nol, sehingga gate yang
+gagal tetap dianggap lulus.
+
+### 2.9 Batas yang perlu diketahui
+
+Ringkasan di atas tampil pada halaman run bagi pengguna yang sudah masuk.
+Pengunjung tanpa akun tetap hanya melihat status dan artefak, karena GitHub
+tidak menampilkan blok ringkasan step kepada pengunjung anonim.
+
+Pemeriksaan pada halaman run tanpa masuk menunjukkan hal itu: blok ringkasan
+tidak dirender sama sekali. Artinya tujuan "penyebab kegagalan terbaca tanpa
+masuk" **tidak tercapai** oleh pendekatan ini.
+
+Yang tetap tercapai adalah penghematan langkah bagi pemilik repository: saat
+run merah, penyebabnya sudah terlihat di halaman run tanpa perlu membuka log
+step satu per satu. Untuk pembaca luar, bukti disediakan dengan cara lain:
+keluaran gate dilampirkan sebagai berkas di `tool/ci/results/` dan dirender
+menjadi gambar di `screenshots/`.
+
+### 2.10 Dua artefak, bukan satu
 
 | Artefak | Isi | Untuk siapa |
 | :--- | :--- | :--- |
@@ -229,6 +320,15 @@ node tool/ci/local_ci.mjs
 Skrip ini menjalankan tiga gate dengan perintah yang identik dengan workflow,
 lalu menyimpan keluarannya di `tool/ci/results/`. Tujuannya agar kegagalan dapat
 ditemukan sebelum push, bukan setelah menunggu antrean runner.
+
+Untuk mengubah keluaran itu menjadi gambar, jalankan:
+
+```bash
+node tool/ci/render.mjs
+```
+
+Hasilnya empat PNG di `screenshots/`, dibuat dari berkas hasil yang sebenarnya,
+bukan teks yang ditulis ulang di dalam skrip.
 
 ---
 
