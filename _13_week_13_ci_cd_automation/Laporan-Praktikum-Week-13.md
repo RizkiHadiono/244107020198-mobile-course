@@ -361,10 +361,20 @@ dari laporan.
 | ---: | :--- | :--- | :--- | ---: | :--- |
 | #1 | `7b54649` | push | failure | 70 detik | step 9 `Analyze` |
 | #2 | `3f12365` | push | **success** | 366 detik | tidak ada |
+| #3 | `e02c6bd` | push | **success** | 416 detik | tidak ada |
 
 Run #1: <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056115379>
 
 Run #2: <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056450753>
+
+Run #3: <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45057760485>
+
+Run #3 dijalankan pada commit terakhir, yaitu commit yang memuat laporan ini.
+Hasilnya sama dengan run #2: seluruh step success. Dua run hijau berurutan
+menunjukkan hasilnya dapat diulang, bukan kebetulan satu kali. Run #3 lebih
+lama 50 detik, seluruhnya berasal dari step build APK yang naik dari 235 menjadi
+302 detik. Waktu build memang bervariasi antar run, dan itulah bagian terbesar
+dari total durasi.
 
 <img src="screenshots/ci-run-list.png" width="760" alt="Daftar run pada tab Actions">
 
@@ -473,7 +483,9 @@ terkompresi, sehingga dua berkas yang banyak berbagi isi dapat dipadatkan
 menjadi 75,07 MB.
 
 Data mentah run tersimpan di `tool/ci/results/run-45056450753.json` dan
-`tool/ci/results/artifacts-45056450753.json`.
+`tool/ci/results/artifacts-45056450753.json`. Run #3 pada commit terakhir juga
+lulus dengan pola yang sama, dan datanya tersimpan di berkas
+`run-45057760485.json` serta `artifacts-45057760485.json`.
 
 ---
 
@@ -595,10 +607,11 @@ selesai.
 ### Bagian yang membuat saya mengubah rancangan
 
 Rancangan pertama saya menaruh build sebelum test, dengan alasan agar artefak
-cepat tersedia. Setelah dihitung, build APK memakan sekitar empat menit
-sementara tiga gate hanya sekitar satu setengah menit. Menaruh build di depan
-berarti setiap kesalahan format membuang empat menit waktu runner. Urutan
-akhirnya dibalik: gate termurah lebih dulu, build terakhir.
+cepat tersedia. Data run kemudian membuktikan bahwa itu keliru: build APK
+memakan 235 sampai 302 detik, sementara ketiga gate hanya sekitar 41 sampai 52
+detik. Menaruh build di depan berarti setiap kesalahan format membuang hampir
+lima menit waktu runner. Urutan akhirnya dibalik: gate termurah lebih dulu,
+build terakhir.
 
 Hal serupa terjadi pada `upload-artifact`. Path-nya harus ditulis dari root
 repository walaupun perintah Flutter berjalan di subfolder. Tanpa
@@ -627,7 +640,7 @@ dapat saya baca karena log step hanya terbuka bagi pengguna yang masuk.
 Yang bisa saya lakukan hanya dua: memastikan perintahnya identik, lalu mengunci
 variabel yang paling mungkin berbeda. Variabel itu adalah versi SDK, karena
 workflow memakai `channel: stable` sementara mesin lokal memakai `3.47.6`.
-Setelah versi dipatok, run kedua lulus.
+Setelah versi dipatok, run kedua dan ketiga lulus berturut-turut.
 
 Saya tidak menuliskan "penyebabnya versi SDK" sebagai kesimpulan, karena itu
 dugaan yang tidak terbukti dari data yang saya miliki. Yang dapat dikatakan:
@@ -677,11 +690,12 @@ paling berbahaya ditemukan oleh mata.
    `v1.1.0` dibuat pada commit `3f12365`, yaitu commit yang lulus pipeline pada
    run #2.
 
-5. Pipeline tidak langsung hijau. Run pertama gagal di `Analyze` karena
-   workflow mengikuti `channel: stable` sementara mesin lokal memakai Flutter
-   `3.47.6`. Versi SDK dipatok, dan run kedua lulus seluruh 15 step dalam 366
-   detik. Kegagalan itu bukan gangguan, melainkan hasil pertama yang jujur:
-   pipeline menguji lingkungan yang berbeda dari mesin pengembang.
+5. Pipeline tidak langsung hijau. Run pertama gagal di `Analyze`, sementara
+   perintah yang sama lulus di mesin lokal. Penyebab pastinya tidak dapat
+   dibaca karena log step butuh akun GitHub. Workflow saat itu mengikuti
+   `channel: stable` sedangkan mesin lokal memakai Flutter `3.47.6`; versi SDK
+   kemudian dipatok, dan run kedua serta ketiga lulus seluruh 15 step dalam 366
+   dan 416 detik. Dua run hijau berurutan menunjukkan hasilnya dapat diulang.
 
 6. Batas yang masih terbuka: integration test tidak berjalan di CI karena
    membutuhkan emulator, signing rilis masih memakai debug keystore, API key
@@ -727,11 +741,14 @@ flutter build appbundle --release
 | `tool/ci/results/04-coverage.txt` | Ringkasan cakupan |
 | `tool/ci/results/local-ci.json` | Ringkasan seluruh gate |
 | `tool/ci/results/run-45056450753.json` | Detail run GitHub Actions yang lulus |
-| `tool/ci/results/artifacts-45056450753.json` | Daftar artefak run |
+| `tool/ci/results/artifacts-45056450753.json` | Daftar artefak run #2 |
+| `tool/ci/results/run-45057760485.json` | Detail run #3 pada commit terakhir |
+| `tool/ci/results/artifacts-45057760485.json` | Daftar artefak run #3 |
 
 ### 13.3 Tautan run
 
 | Run | Tautan |
 | ---: | :--- |
-| #1 (failure) | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056115379> |
+| Run #1 (failure) | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056115379> |
 | #2 (success) | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056450753> |
+| #3 (success) | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45057760485> |

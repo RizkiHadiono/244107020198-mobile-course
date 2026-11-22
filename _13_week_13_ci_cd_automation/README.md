@@ -41,10 +41,14 @@ Folder ini adalah kelanjutan proyek catatan dari Week 12, dengan fokus baru:
 | ---: | :--- | :--- | ---: |
 | #1 | `7b54649` | failure di step `Analyze` | 70 detik |
 | #2 | `3f12365` | **success**, seluruh 15 step | 366 detik |
+| #3 | `e02c6bd` | **success**, seluruh 15 step | 416 detik |
 
-Run #1 gagal karena workflow memakai `channel: stable` yang bergerak mengikuti
-rilis terbaru, sementara mesin lokal memakai Flutter `3.47.6`. Versi SDK
-kemudian dipatok, dan run #2 hijau. Rinciannya ada di bagian 7 laporan.
+Run #1 gagal di step `Analyze` sementara perintah yang sama lulus di mesin
+lokal. Penyebab pastinya tidak dapat dibaca karena log step hanya terbuka bagi
+pengguna yang masuk, jadi dugaan yang paling masuk akal adalah pergeseran versi
+SDK: workflow saat itu memakai `channel: stable`, sedangkan mesin lokal memakai
+Flutter `3.47.6`. Versi SDK kemudian dipatok, dan run #2 hijau. Dugaan itu tidak
+ditulis sebagai fakta di laporan.
 
 Gate lokal dijalankan lewat `node tool/ci/local_ci.mjs`. Keluaran mentahnya
 tersimpan di `tool/ci/results/` dan gambarnya ada di `screenshots/`.
