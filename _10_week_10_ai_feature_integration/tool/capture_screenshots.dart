@@ -1,6 +1,6 @@
 // Tool pembuat screenshot dokumentasi untuk Laporan Praktikum Week 10.
 //
-// Bukan unit test — jalankan manual saat dokumentasi perlu diperbarui:
+// Bukan unit test Ã¢â‚¬â€ jalankan manual saat dokumentasi perlu diperbarui:
 //   flutter test tool/capture_screenshots.dart
 //
 // Hasil tersimpan di folder `screenshots/`.
@@ -244,7 +244,7 @@ class _FakeChatNotifier extends ChatNotifier {
 
 class _FakeAiRepository implements AiRepository {
   @override
-  Future<String?> getApiKey() async => 'AIzaSyD9xQ2mK7pL4vN8rT1wZ3bY6cH0aF5eJ2uX';
+  Future<String?> getApiKey() async => 'CONTOH_KEY_GANTI_SENDIRI';
 
   @override
   Future<void> saveApiKey(String key) async {}
