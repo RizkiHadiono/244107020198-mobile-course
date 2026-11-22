@@ -35,13 +35,14 @@ Folder ini adalah kelanjutan proyek catatan dari Week 12, dengan fokus baru:
 | Cakupan kode | `flutter test --coverage` | **74,19 %** baris (848/1143) |
 | Build APK | `flutter build apk --release` | 52,37 MB |
 | Build AAB | `flutter build appbundle --release` | 51,16 MB |
-| Run GitHub Actions | workflow `Flutter CI` | **success**, 366 detik, dua artefak |
+| Run GitHub Actions | workflow `Flutter CI` | **success**, run #2 sampai #4 hijau, dua artefak |
 
 | Run | Commit | Status | Durasi |
 | ---: | :--- | :--- | ---: |
 | #1 | `7b54649` | failure di step `Analyze` | 70 detik |
 | #2 | `3f12365` | **success**, seluruh 15 step | 366 detik |
 | #3 | `e02c6bd` | **success**, seluruh 15 step | 416 detik |
+| #4 | `0e893f6` | **success**, seluruh 15 step | 363 detik |
 
 Run #1 gagal di step `Analyze` sementara perintah yang sama lulus di mesin
 lokal. Penyebab pastinya tidak dapat dibaca karena log step hanya terbuka bagi
@@ -53,9 +54,10 @@ ditulis sebagai fakta di laporan.
 Gate lokal dijalankan lewat `node tool/ci/local_ci.mjs`. Keluaran mentahnya
 tersimpan di `tool/ci/results/` dan gambarnya ada di `screenshots/`.
 
-Status run di GitHub Actions: **success** pada run #2
-([halaman run](https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056450753)).
-Run #1 gagal di step `Analyze` sebelum versi Flutter dipatok.
+Status run di GitHub Actions: **success** pada run #2 sampai #4
+([halaman run #4](https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45058635734)).
+Run #1 gagal di step `Analyze` sebelum versi Flutter dipatok. Tag `v1.1.0`
+menunjuk ke commit `0e893f6` yang lulus pada run #4.
 
 ---
 

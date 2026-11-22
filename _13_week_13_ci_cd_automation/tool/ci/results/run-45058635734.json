@@ -1,0 +1,217 @@
+{
+  "id": 45058635734,
+  "name": "Flutter CI",
+  "title": "Catat run ketiga pada laporan dan perhalus klaim penyebab kegagalan",
+  "event": "push",
+  "branch": "main",
+  "commit": "0e893f69a2c5ce0d0b2e11875ae94bf0ccbd5719",
+  "commitShort": "0e893f6",
+  "status": "completed",
+  "conclusion": "success",
+  "runNumber": 4,
+  "attempt": 1,
+  "createdAt": "2026-11-22T19:04:24Z",
+  "updatedAt": "2026-11-22T19:10:27Z",
+  "durationSeconds": 363,
+  "htmlUrl": "https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45058635734",
+  "jobs": [
+    {
+      "name": "Format, analyze, test, build",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-22T19:04:27Z",
+      "completedAt": "2026-11-22T19:10:26Z",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:04:27Z",
+          "completedAt": "2026-11-22T19:04:29Z",
+          "durationSeconds": 2
+        },
+        {
+          "number": 2,
+          "name": "Checkout repository",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:04:30Z",
+          "completedAt": "2026-11-22T19:04:32Z",
+          "durationSeconds": 2
+        },
+        {
+          "number": 3,
+          "name": "Set up Java",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:04:32Z",
+          "completedAt": "2026-11-22T19:04:33Z",
+          "durationSeconds": 1
+        },
+        {
+          "number": 4,
+          "name": "Set up Flutter",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:04:33Z",
+          "completedAt": "2026-11-22T19:04:57Z",
+          "durationSeconds": 24
+        },
+        {
+          "number": 5,
+          "name": "Tampilkan versi Flutter dan Dart",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:04:57Z",
+          "completedAt": "2026-11-22T19:04:57Z",
+          "durationSeconds": 0
+        },
+        {
+          "number": 6,
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:04:57Z",
+          "completedAt": "2026-11-22T19:04:58Z",
+          "durationSeconds": 1
+        },
+        {
+          "number": 7,
+          "name": "Install SQLite library",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:04:58Z",
+          "completedAt": "2026-11-22T19:05:02Z",
+          "durationSeconds": 4
+        },
+        {
+          "number": 8,
+          "name": "Verify formatting",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:05:02Z",
+          "completedAt": "2026-11-22T19:05:02Z",
+          "durationSeconds": 0
+        },
+        {
+          "number": 9,
+          "name": "Analyze",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:05:02Z",
+          "completedAt": "2026-11-22T19:05:15Z",
+          "durationSeconds": 13
+        },
+        {
+          "number": 10,
+          "name": "Run tests with coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:05:15Z",
+          "completedAt": "2026-11-22T19:05:48Z",
+          "durationSeconds": 33
+        },
+        {
+          "number": 11,
+          "name": "Ringkas hasil gate ke halaman run",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:05:48Z",
+          "completedAt": "2026-11-22T19:05:48Z",
+          "durationSeconds": 0
+        },
+        {
+          "number": 12,
+          "name": "Upload coverage report",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:05:48Z",
+          "completedAt": "2026-11-22T19:05:49Z",
+          "durationSeconds": 1
+        },
+        {
+          "number": 13,
+          "name": "Build release APK",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:05:49Z",
+          "completedAt": "2026-11-22T19:10:05Z",
+          "durationSeconds": 256
+        },
+        {
+          "number": 14,
+          "name": "Build release App Bundle",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:10:05Z",
+          "completedAt": "2026-11-22T19:10:19Z",
+          "durationSeconds": 14
+        },
+        {
+          "number": 15,
+          "name": "Upload Android builds",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:10:19Z",
+          "completedAt": "2026-11-22T19:10:23Z",
+          "durationSeconds": 4
+        },
+        {
+          "number": 28,
+          "name": "Post Set up Flutter",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:10:23Z",
+          "completedAt": "2026-11-22T19:10:24Z",
+          "durationSeconds": 1
+        },
+        {
+          "number": 29,
+          "name": "Post Set up Java",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:10:24Z",
+          "completedAt": "2026-11-22T19:10:24Z",
+          "durationSeconds": 0
+        },
+        {
+          "number": 30,
+          "name": "Post Checkout repository",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:10:24Z",
+          "completedAt": "2026-11-22T19:10:24Z",
+          "durationSeconds": 0
+        },
+        {
+          "number": 31,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "startedAt": "2026-11-22T19:10:24Z",
+          "completedAt": "2026-11-22T19:10:24Z",
+          "durationSeconds": 0
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "android-builds",
+      "sizeBytes": 78712623,
+      "sizeMB": 75.07,
+      "expired": false,
+      "createdAt": "2026-11-22T19:10:23Z",
+      "downloadUrl": "https://api.github.com/repos/RizkiHadiono/244107020198-mobile-course/actions/artifacts/14768736368/zip"
+    },
+    {
+      "name": "coverage-report",
+      "sizeBytes": 3301,
+      "sizeMB": 0,
+      "expired": false,
+      "createdAt": "2026-11-22T19:05:49Z",
+      "downloadUrl": "https://api.github.com/repos/RizkiHadiono/244107020198-mobile-course/actions/artifacts/14768113990/zip"
+    }
+  ]
+}

@@ -11,9 +11,9 @@ terlihat.
 | Aspek | Status |
 | :--- | :--- |
 | Workflow CI | Berjalan pada push ke `main`, pull request, dan run manual |
-| Run terakhir | #2, seluruh 15 step success, 366 detik |
+| Run terakhir | #4, seluruh 15 step success, 363 detik |
 | Artefak | `android-builds` 75,07 MB, `coverage-report` 3,22 KB |
-| Tag | `v1.1.0` pada commit `3f12365` |
+| Tag | `v1.1.0` pada commit `0e893f6`, lulus pada run #4 |
 | Gate lokal | Format, analisis, dan test lulus |
 
 Data mentahnya ada di `tool/ci/results/`. Untuk mengambil ulang:

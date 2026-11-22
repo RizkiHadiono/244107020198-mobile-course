@@ -1,0 +1,18 @@
+[
+  {
+    "name": "android-builds",
+    "sizeBytes": 78712623,
+    "sizeMB": 75.07,
+    "expired": false,
+    "createdAt": "2026-11-22T19:10:23Z",
+    "downloadUrl": "https://api.github.com/repos/RizkiHadiono/244107020198-mobile-course/actions/artifacts/14768736368/zip"
+  },
+  {
+    "name": "coverage-report",
+    "sizeBytes": 3301,
+    "sizeMB": 0,
+    "expired": false,
+    "createdAt": "2026-11-22T19:05:49Z",
+    "downloadUrl": "https://api.github.com/repos/RizkiHadiono/244107020198-mobile-course/actions/artifacts/14768113990/zip"
+  }
+]

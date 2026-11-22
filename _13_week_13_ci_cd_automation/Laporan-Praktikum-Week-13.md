@@ -242,8 +242,8 @@ with:
 ```
 
 Rancangan awal hanya memakai `channel: stable`. Run pertama gagal di step
-`Analyze`, dan setelah versi dipatok, run kedua lulus. Rincian kegagalan itu
-ada di bagian 7.4 dan 7.5.
+`Analyze`, dan setelah versi dipatok, run #2 sampai #4 lulus. Rincian kegagalan
+itu ada di bagian 7.4 dan 7.5.
 
 ### 5.7 Ringkasan gate di halaman run
 
@@ -362,19 +362,25 @@ dari laporan.
 | #1 | `7b54649` | push | failure | 70 detik | step 9 `Analyze` |
 | #2 | `3f12365` | push | **success** | 366 detik | tidak ada |
 | #3 | `e02c6bd` | push | **success** | 416 detik | tidak ada |
+| #4 | `0e893f6` | push | **success** | 363 detik | tidak ada |
 
-Run #1: <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056115379>
+| Run | Tautan |
+| ---: | :--- |
+| #1 | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056115379> |
+| #2 | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056450753> |
+| #3 | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45057760485> |
+| #4 | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45058635734> |
 
-Run #2: <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056450753>
+Run #2 sampai #4 semuanya hijau dan memakai perintah yang sama. Tiga run hijau
+berurutan menunjukkan hasilnya dapat diulang, bukan kebetulan satu kali.
+Variasi durasi seluruhnya berasal dari step build APK, yang bergerak antara 235
+dan 302 detik. Gate yang menjadi inti pemeriksaan justru paling stabil: 11
+sampai 15 detik untuk analisis, dan 30 sampai 37 detik untuk test.
 
-Run #3: <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45057760485>
-
-Run #3 dijalankan pada commit terakhir, yaitu commit yang memuat laporan ini.
-Hasilnya sama dengan run #2: seluruh step success. Dua run hijau berurutan
-menunjukkan hasilnya dapat diulang, bukan kebetulan satu kali. Run #3 lebih
-lama 50 detik, seluruhnya berasal dari step build APK yang naik dari 235 menjadi
-302 detik. Waktu build memang bervariasi antar run, dan itulah bagian terbesar
-dari total durasi.
+Commit dokumentasi setelah tag juga diverifikasi oleh pipeline yang sama. Run
+untuk commit tersebut tidak didaftarkan satu per satu di sini, karena setiap
+penambahan daftar akan menghasilkan commit baru dan memicu run berikutnya.
+Daftar run terbaru selalu dapat dilihat di tab Actions.
 
 <img src="screenshots/ci-run-list.png" width="760" alt="Daftar run pada tab Actions">
 
@@ -483,9 +489,9 @@ terkompresi, sehingga dua berkas yang banyak berbagi isi dapat dipadatkan
 menjadi 75,07 MB.
 
 Data mentah run tersimpan di `tool/ci/results/run-45056450753.json` dan
-`tool/ci/results/artifacts-45056450753.json`. Run #3 pada commit terakhir juga
-lulus dengan pola yang sama, dan datanya tersimpan di berkas
-`run-45057760485.json` serta `artifacts-45057760485.json`.
+`tool/ci/results/artifacts-45056450753.json`. Run #3 dan #4 juga lulus dengan
+pola yang sama; datanya ada di `run-45057760485.json`, `run-45058635734.json`,
+serta berkas artefak masing-masing.
 
 ---
 
@@ -516,16 +522,26 @@ $ git tag -n --list "v1.1.0"
 v1.1.0          Week 13: CI/CD dan otomatisasi rilis
 
 $ git log -1 --format='%H %d'
-3f12365f821839b46850e42a2b4b3495331f0a78  (HEAD -> main, tag: v1.1.0, origin/main)
+0e893f69a2c5ce0d0b2e11875ae94bf0ccbd5719  (HEAD -> main, tag: v1.1.0, origin/main)
+
+$ git ls-remote --tags origin v1.1.0
+8f03b3ff00dc9d30d143a78e539563711bdcae69        refs/tags/v1.1.0
+0e893f69a2c5ce0d0b2e11875ae94bf0ccbd5719        refs/tags/v1.1.0^{}
 ```
 
 | Aspek | Nilai |
 | :--- | :--- |
 | Nama tag | `v1.1.0` |
 | Jenis | anotasi, bukan lightweight |
-| Commit | `3f12365` |
-| Run yang membuktikan | #2, seluruh 15 step success |
-| Pesan tag | memuat tautan ke halaman run dan nama artefak |
+| Objek tag | `8f03b3f` |
+| Commit yang ditandai | `0e893f6` |
+| Run yang membuktikan | #4, seluruh 15 step success, 363 detik |
+| Pesan tag | memuat tautan ke halaman run dan nomor versi aplikasi |
+
+Baris `refs/tags/v1.1.0^{}` pada `git ls-remote` menunjukkan commit yang
+ditunjuk setelah tag anotasi dibuka. Angkanya harus sama dengan hasil
+`git rev-parse v1.1.0^{commit}`; bila berbeda, tag menunjuk ke tempat yang
+salah.
 
 Tag anotasi dipilih karena menyimpan pesan, tanggal, dan pembuat tag di dalam
 objek Git tersendiri. Lightweight tag hanya menunjuk ke commit tanpa metadata,
@@ -640,7 +656,7 @@ dapat saya baca karena log step hanya terbuka bagi pengguna yang masuk.
 Yang bisa saya lakukan hanya dua: memastikan perintahnya identik, lalu mengunci
 variabel yang paling mungkin berbeda. Variabel itu adalah versi SDK, karena
 workflow memakai `channel: stable` sementara mesin lokal memakai `3.47.6`.
-Setelah versi dipatok, run kedua dan ketiga lulus berturut-turut.
+Setelah versi dipatok, run kedua sampai keempat lulus berturut-turut.
 
 Saya tidak menuliskan "penyebabnya versi SDK" sebagai kesimpulan, karena itu
 dugaan yang tidak terbukti dari data yang saya miliki. Yang dapat dikatakan:
@@ -687,15 +703,15 @@ paling berbahaya ditemukan oleh mata.
 
 4. Versi naik dari `1.0.0+1` menjadi `1.1.0+2`, mengikuti aturan bahwa fitur
    baru menaikkan minor dan setiap unggahan menaikkan build number. Tag anotasi
-   `v1.1.0` dibuat pada commit `3f12365`, yaitu commit yang lulus pipeline pada
-   run #2.
+   `v1.1.0` dibuat pada commit `0e893f6`, yaitu commit yang lulus pipeline pada
+   run #4 dan memuat laporan lengkap beserta buktinya.
 
 5. Pipeline tidak langsung hijau. Run pertama gagal di `Analyze`, sementara
    perintah yang sama lulus di mesin lokal. Penyebab pastinya tidak dapat
    dibaca karena log step butuh akun GitHub. Workflow saat itu mengikuti
    `channel: stable` sedangkan mesin lokal memakai Flutter `3.47.6`; versi SDK
-   kemudian dipatok, dan run kedua serta ketiga lulus seluruh 15 step dalam 366
-   dan 416 detik. Dua run hijau berurutan menunjukkan hasilnya dapat diulang.
+   kemudian dipatok, dan run #2 sampai #4 lulus seluruh 15 step dalam 366, 416,
+   dan 363 detik. Tiga run hijau berurutan menunjukkan hasilnya dapat diulang.
 
 6. Batas yang masih terbuka: integration test tidak berjalan di CI karena
    membutuhkan emulator, signing rilis masih memakai debug keystore, API key
@@ -740,10 +756,12 @@ flutter build appbundle --release
 | `tool/ci/results/03-test.txt` | Keluaran gate test |
 | `tool/ci/results/04-coverage.txt` | Ringkasan cakupan |
 | `tool/ci/results/local-ci.json` | Ringkasan seluruh gate |
-| `tool/ci/results/run-45056450753.json` | Detail run GitHub Actions yang lulus |
+| `tool/ci/results/run-45056450753.json` | Detail run #2 |
 | `tool/ci/results/artifacts-45056450753.json` | Daftar artefak run #2 |
-| `tool/ci/results/run-45057760485.json` | Detail run #3 pada commit terakhir |
+| `tool/ci/results/run-45057760485.json` | Detail run #3 |
 | `tool/ci/results/artifacts-45057760485.json` | Daftar artefak run #3 |
+| `tool/ci/results/run-45058635734.json` | Detail run #4, commit yang ditandai tag |
+| `tool/ci/results/artifacts-45058635734.json` | Daftar artefak run #4 |
 
 ### 13.3 Tautan run
 
@@ -752,3 +770,4 @@ flutter build appbundle --release
 | Run #1 (failure) | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056115379> |
 | #2 (success) | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45056450753> |
 | #3 (success) | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45057760485> |
+| #4 (success, ditandai tag) | <https://github.com/RizkiHadiono/244107020198-mobile-course/actions/runs/45058635734> |
