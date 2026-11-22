@@ -40,18 +40,24 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Java 17 diperlukan Gradle untuk membangun Android.
       - name: Set up Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
 
+      # Versi Flutter dipatok, bukan mengikuti `stable` yang bergerak.
+      # Run pertama workflow ini gagal di langkah Analyze justru karena
+      # `stable` sudah lebih baru daripada versi di mesin pengembang,
+      # sehingga analyzer melaporkan info yang tidak muncul secara lokal.
+      # Versi yang dipatok membuat hasil CI dan lokal dapat dibandingkan.
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.47.6'
           channel: stable
           cache: true
 
@@ -74,18 +80,46 @@ jobs:
       # Gate 1: seluruh kode harus sudah diformat. Jika ada yang belum,
       # job gagal dan menampilkan berkas mana yang perlu dirapikan.
       - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed .
+        run: |
+          set -o pipefail
+          dart format --output=none --set-exit-if-changed . 2>&1 | tee format.log
 
       # Gate 2: analisis statis. `--fatal-infos` membuat info ikut gagal,
       # bukan hanya warning dan error.
       - name: Analyze
-        run: flutter analyze --fatal-infos
+        run: |
+          set -o pipefail
+          flutter analyze --fatal-infos 2>&1 | tee analyze.log
 
       # Gate 3: seluruh test unit dan widget.
       - name: Run tests with coverage
-        run: flutter test --coverage
+        run: |
+          set -o pipefail
+          flutter test --coverage 2>&1 | tee test.log
+
+      # Log mentah sebuah job hanya dapat dibuka oleh pengguna yang sudah
+      # masuk. Ringkasan ini ditulis ke halaman run, yang tetap dapat dibaca
+      # tanpa masuk, sehingga kegagalan gate tetap dapat ditelusuri.
+      - name: Ringkas hasil gate ke halaman run
+        if: always()
+        run: |
+          {
+            echo "## Ringkasan gate"
+            for f in format.log analyze.log test.log; do
+              echo
+              echo "### \`$f\`"
+              if [ -f "$f" ]; then
+                echo '```'
+                tail -n 40 "$f"
+                echo '```'
+              else
+                echo "_Berkas tidak dihasilkan, langkahnya tidak berjalan._"
+              fi
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload coverage report
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
