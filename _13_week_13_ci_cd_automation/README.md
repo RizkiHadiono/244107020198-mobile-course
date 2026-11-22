@@ -223,9 +223,12 @@ request. Untuk menjalankannya tanpa commit baru, buka tab **Actions**, pilih
 
 | # | File | Keterangan |
 | :--- | :--- | :--- |
-| 5 | `screenshots/ci-run-list.png` | Dua run: #1 gagal, #2 berhasil |
-| 6 | `screenshots/ci-run-summary.png` | Ringkasan run #2: success, 6m 6s, dua artefak |
-| 7 | `screenshots/ci-run-steps.png` | Seluruh step run #2 berstatus success |
+| 5 | `screenshots/ci-run-list.png` | Tiga run: #1 gagal, #2 sampai #4 berhasil |
+| 6 | `screenshots/ci-run-failed.png` | Run #1 berhenti di step `Analyze` |
+| 7 | `screenshots/ci-run-summary.png` | Ringkasan run #2: success, 6m 6s, dua artefak |
+| 8 | `screenshots/ci-run-steps.png` | Seluruh step run #2 berstatus success |
+
+<img src="screenshots/ci-run-list.png" width="760" alt="Daftar run pada tab Actions">
 
 <img src="screenshots/ci-run-summary.png" width="760" alt="Ringkasan run GitHub Actions">
 
